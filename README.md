@@ -21,6 +21,10 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * [qb-drugs](https://github.com/qbcore-framework/qb-drugs)
 * [qb-shops](https://github.com/qbcore-framework/qb-shops)
 
+# How to easily create new custom inventory images
+### Video Guide Installation
+* [**[QBCore] [lj-inventory] - How to create custom images using Photoshop**](https://youtu.be/EAe7PgPq1zs)
+
 # Key Features
 * ALL IMAGES FOLLOW THE SAME DIMENSIONS
 * Easy Photoshop guideline template for creating custom images within lj-inventory
@@ -36,7 +40,7 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 #
 
 # Previews
-### simple guideline psd provided (found in main directory lj-inventory)
+### simple guideline psd provided (found in main directory lj-inventory) [WATCH HOW TO](https://youtu.be/EAe7PgPq1zs)
 ![lj-inventory Guideline](https://user-images.githubusercontent.com/91661118/146315681-c67f542d-e2bc-43ca-9957-7f1971b84268.png)
 ### full inventory
 ![full inventory](https://user-images.githubusercontent.com/91661118/146315750-1199a37e-88e0-4d48-86d3-ae0b85df6a72.png)
