@@ -315,6 +315,7 @@ end)
 
 RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventory, other)
     if not IsEntityDead(PlayerPedId()) then
+        Wait(500)
         ToggleHotbar(false)
         TriggerScreenblurFadeIn(135)
         SetNuiFocus(true, true)
@@ -745,6 +746,7 @@ RegisterNUICallback("CloseInventory", function(data, cb)
         TriggerServerEvent("inventory:server:SaveInventory", "drop", CurrentDrop)
         CurrentDrop = 0
     end
+    Wait(50)
     TriggerScreenblurFadeOut(135)
     SetNuiFocus(false, false)
     inInventory = false
