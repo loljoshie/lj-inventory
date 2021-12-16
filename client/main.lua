@@ -69,11 +69,7 @@ local function FormatWeaponAttachments(itemdata)
 end
 
 local function IsBackEngine(vehModel)
-    for _, model in pairs(BackEngineVehicles) do
-        if GetHashKey(model) == vehModel then
-            return true
-        end
-    end
+    if BackEngineVehicles[vehModel] then return true end
     return false
 end
 
