@@ -101,6 +101,7 @@ body {
     height: 100%;
     left: 0vw;
     display: none;
+    user-select: none;
 }
 
 .inv-background {
