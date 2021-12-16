@@ -596,11 +596,17 @@ function FormatItemInfo(itemData, dom) {
             $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p>");
         } else {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>" + itemData.description + "</p>");
+            $(".item-info-description").html("<p>" + itemData.description + "</p>" +
+            "<p><strong>Weight: </strong><span>" +
+            (itemData.weight / 1000).toFixed(1) +
+            "</span></p>");
         }
     } else {
         $(".item-info-title").html("<p>" + itemData.label + "</p>");
-        $(".item-info-description").html("<p>" + itemData.description + "</p>");
+        $(".item-info-description").html("<p>" + itemData.description + "</p>" +
+        "<p><strong>Weight: </strong><span>" +
+        (itemData.weight / 1000).toFixed(1) +
+        "</span></p>");
     }
 }
 
