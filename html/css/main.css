@@ -101,6 +101,7 @@ body {
     height: 100%;
     left: 0vw;
     display: none;
+    user-select: none;
 }
 
 .inv-background {
@@ -202,6 +203,7 @@ body {
     right: 0px;
     width: 11%;
     left: 3vh;
+    cursor: pointer; /* Can also be 'none' however, as these are the buttons I feel as the pointer fits better */
 }
 
 .combine-option-container {
@@ -360,6 +362,7 @@ body {
     text-align: right;
     font-size: 1.25vh;
     font-weight: 400;
+    cursor: none;
 }
 
 .item-slot-amount > p:after {
@@ -377,6 +380,7 @@ body {
     text-align: right;
     font-size: 1.25vh;
     font-weight: 400;
+    cursor: none;
 }
 
 .item-slot-label {
@@ -398,6 +402,7 @@ body {
     white-space: pre;
     text-overflow: ellipsis;
     overflow: hidden;
+    cursor: none;
 }
 
 .item-slot-quality {
@@ -462,6 +467,7 @@ body {
     top: 8.6%;
     width: 28.8%;
     z-index: 1000;
+    cursor: none;
 }
 
 #player-inv-label {
@@ -475,6 +481,7 @@ body {
     top: 25px;
     float: left;
     text-transform: normal;
+    cursor: none;
 }
 
 #player-inv-weight {
@@ -500,7 +507,9 @@ body {
     top: 25px;
     float: left;
     text-transform: normal;
+    cursor: none;
 }
+
 
 #other-inv-weight {
     position: relative;
@@ -512,6 +521,7 @@ body {
     bottom: 40px;
     right: -33.5%;
     float: right;
+    cursor: none;
 }
 
 .player-inv-weight {
