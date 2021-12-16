@@ -597,14 +597,14 @@ function FormatItemInfo(itemData, dom) {
         } else {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>" + itemData.description + "</p>" +
-            "<p><strong>Weight: </strong><span>" +
+            "<br/><p><strong>Weight: </strong><span>" +
             (itemData.weight / 1000).toFixed(1) +
             "</span></p>");
         }
     } else {
         $(".item-info-title").html("<p>" + itemData.label + "</p>");
         $(".item-info-description").html("<p>" + itemData.description + "</p>" +
-        "<p><strong>Weight: </strong><span>" +
+        "<br/><p><strong>Weight: </strong><span>" +
         (itemData.weight / 1000).toFixed(1) +
         "</span></p>");
     }
