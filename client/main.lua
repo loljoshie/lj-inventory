@@ -880,7 +880,7 @@ CreateThread(function()
 	while true do
 		local pos = GetEntityCoords(PlayerPedId())
 		local inRange = false
-		local distance = #(pos - vector3(Config.AttachmentCrafting["location"].x, Config.AttachmentCrafting["location"].y, Config.AttachmentCrafting["location"].z))
+		local distance = #(pos - Config.AttachmentCrafting.location)
 
 		if distance < 10 then
 			inRange = true
