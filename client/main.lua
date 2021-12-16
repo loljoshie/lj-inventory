@@ -317,7 +317,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
     if not IsEntityDead(PlayerPedId()) then
         Wait(500)
         ToggleHotbar(false)
-        TriggerScreenblurFadeIn(135)
+        TriggerScreenblurFadeIn(1000)
         SetNuiFocus(true, true)
         if other ~= nil then
             currentOtherInventory = other.name
@@ -729,6 +729,7 @@ RegisterNUICallback("CloseInventory", function(data, cb)
         CurrentStash = nil
         SetNuiFocus(false, false)
         inInventory = false
+        TriggerScreenblurFadeOut(1000)
         ClearPedTasks(PlayerPedId())
         return
     end
@@ -747,7 +748,7 @@ RegisterNUICallback("CloseInventory", function(data, cb)
         CurrentDrop = 0
     end
     Wait(50)
-    TriggerScreenblurFadeOut(135)
+    TriggerScreenblurFadeOut(1000)
     SetNuiFocus(false, false)
     inInventory = false
 end)
