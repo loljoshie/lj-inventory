@@ -20,6 +20,7 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * [qb-radio](https://github.com/qbcore-framework/qb-radio)
 * [qb-drugs](https://github.com/qbcore-framework/qb-drugs)
 * [qb-shops](https://github.com/qbcore-framework/qb-shops)
+* [qb-target](https://github.com/loljoshie/qb-target)
 
 # How to easily create new custom inventory images
 ### Video Guide Installation
