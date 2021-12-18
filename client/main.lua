@@ -747,6 +747,7 @@ RegisterNUICallback("CloseInventory", function(data, cb)
     TriggerScreenblurFadeOut(1000)
     SetNuiFocus(false, false)
     inInventory = false
+    openAnim()
 end)
 RegisterNUICallback("UseItem", function(data, cb)
     TriggerServerEvent("inventory:server:UseItem", data.inventory, data.item)
