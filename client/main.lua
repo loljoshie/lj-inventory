@@ -141,7 +141,7 @@ end
 local function openAnim()
     LoadAnimDict('pickup_object')
     TaskPlayAnim(PlayerPedId(),'pickup_object', 'putdown_low', 5.0, 1.5, 1.0, 48, 0.0, 0, 0, 0)
-    Wait(500)
+    Wait(250)
     ClearPedTasks(PlayerPedId())
 end
 
@@ -426,7 +426,7 @@ RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
     local weaponName = tostring(weaponData.name)
     if currentWeapon == weaponName then
         SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
-        Wait(1500)
+        Wait(500)
         RemoveAllPedWeapons(ped, true)
         TriggerEvent('weapons:client:SetCurrentWeapon', nil, shootbool)
         currentWeapon = nil
@@ -502,7 +502,7 @@ RegisterNetEvent('inventory:client:DropItemAnim', function()
         Wait(7)
     end
     TaskPlayAnim(ped, "pickup_object" ,"pickup_low" ,8.0, -8.0, -1, 1, 0, false, false, false )
-    Wait(2000)
+    Wait(1500)
     ClearPedTasks(ped)
 end)
 
