@@ -15,6 +15,17 @@ local isCrafting = false
 local isHotbar = false
 local showTrunkPos = false
 local itemInfos = {}
+local showBlur = true
+
+RegisterNUICallback('showBlur', function()
+    Wait(50)
+    TriggerEvent("lj-inventory:client:showBlur")
+end) 
+
+RegisterNetEvent("lj-inventory:client:showBlur", function()
+    Wait(50)
+    showBlur = not showBlur
+end)
 
 -- Functions
 
@@ -313,7 +324,9 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
     if not IsEntityDead(PlayerPedId()) then
         Wait(500)
         ToggleHotbar(false)
-        TriggerScreenblurFadeIn(1000)
+        if showBlur == true then
+            TriggerScreenblurFadeIn(1000)
+        end
         SetNuiFocus(true, true)
         if other ~= nil then
             currentOtherInventory = other.name
