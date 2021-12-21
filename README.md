@@ -14,13 +14,13 @@ Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to
 In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorganized and also created some custom images.
 # Dependencies
 * [qbcore framework](https://github.com/qbcore-framework)
+* [qb-target](https://github.com/BerkieBb/qb-target)
 * [qb-core](https://github.com/qbcore-framework/qb-core)
 * [qb-logs](https://github.com/qbcore-framework/qb-logs)
 * [qb-traphouse](https://github.com/qbcore-framework/qb-traphouse)
 * [qb-radio](https://github.com/qbcore-framework/qb-radio)
 * [qb-drugs](https://github.com/qbcore-framework/qb-drugs)
 * [qb-shops](https://github.com/qbcore-framework/qb-shops)
-* [qb-target](https://github.com/loljoshie/qb-target)
 
 # How to easily create new custom inventory images
 ### Video Guide Installation
@@ -58,6 +58,11 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 
 # Change Logs
 
+### 1.1
+* Added help information box (helps you learn how to use inventory better)
+* Added option to turn on and off blur effect
+* Added qb-target for crafting - Boom1053
+* Added close animation and adjusted wait times - evanillaa
 ### 1.0
 * Initial release
 
