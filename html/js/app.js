@@ -1,3 +1,29 @@
+const { useQuasar } = Quasar
+const { ref } = Vue
+
+const app = Vue.createApp({
+  setup () {
+    return {
+        options: ref(false),
+        help: ref(false),
+        showblur: ref(true),
+    }
+  },
+  methods: {
+    select: function(event) {
+        targetId = event.currentTarget.id;
+        showBlur()
+    }
+}
+})
+
+app.use(Quasar, { config: {} })
+app.mount('#inventory-menus')
+
+function showBlur() {
+    $.post('https://lj-inventory/showBlur');
+}
+
 var InventoryOption = "0, 0, 0";
 
 var totalWeight = 0;
