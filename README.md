@@ -30,6 +30,8 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * ALL IMAGES FOLLOW THE SAME DIMENSIONS
 * Easy Photoshop guideline template for creating custom images within lj-inventory
 * Custom brand logo above option buttons
+* Options menu
+* Help box 
 * Custom inventory images (more always being added in each new update)
 * Default weight icon easily changeable with Font Awesome icons
 * Hotkey numbers visible in inventory and hotbar slots
@@ -45,6 +47,10 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 ![lj-inventory Guideline](https://user-images.githubusercontent.com/91661118/146315681-c67f542d-e2bc-43ca-9957-7f1971b84268.png)
 ### full inventory
 ![full inventory](https://user-images.githubusercontent.com/91661118/146315750-1199a37e-88e0-4d48-86d3-ae0b85df6a72.png)
+### options menu
+![options menu](https://user-images.githubusercontent.com/91661118/147011228-ee6c9c0c-0058-4418-8c5f-c484f2f621f7.png)
+### help box
+![help box](https://user-images.githubusercontent.com/91661118/147011242-bb98e650-12c4-43d9-9a93-afa8edcecd90.png)
 ### hotbar slots
 ![hotbar slots](https://user-images.githubusercontent.com/91661118/146315788-3af800e4-af26-4e9a-85be-bd0035689b70.png)
 ### used & removed itembox 
