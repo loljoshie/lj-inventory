@@ -68,7 +68,6 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * Added help information box (helps you learn how to use inventory better)
 * Added option to turn on and off blur effect
 * Added qb-target for crafting - Boom1053
-* Added close animation and adjusted wait times - evanillaa
 ### 1.0
 * Initial release
 
