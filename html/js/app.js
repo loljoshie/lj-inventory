@@ -617,6 +617,12 @@ function FormatItemInfo(itemData, dom) {
                 itemData.info.worth +
                 "</span></p>"
             );
+        } else if (itemData.name == "visa" || itemData.name == "mastercard") {
+            $(".item-info-title").html('<p>'+itemData.label+'</p>')
+            var str = ""+ itemData.info.cardNumber + "";
+            var res = str.slice(12);
+            var cardNumber = "************" + res;
+            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');
         } else if (itemData.name == "labkey") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p>");
