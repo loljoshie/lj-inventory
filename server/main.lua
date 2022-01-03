@@ -1413,21 +1413,24 @@ RegisterServerEvent("inventory:server:GiveItem", function(target, inventory, ite
 		if amount == 0 then
 			amount = item.amount
 		end
-		if OtherPlayer.Functions.AddItem(item.name, amount, false, item.info) then
-			TriggerClientEvent('inventory:client:ItemBox',target, QBCore.Shared.Items[item.name], "add")
-			TriggerClientEvent('QBCore:Notify', target, "You Received "..amount..' '..item.label.." From "..Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname)
-			TriggerClientEvent("inventory:client:UpdatePlayerInventory", target, true)
-			Player.Functions.RemoveItem(item.name, amount, item.slot)
-			TriggerClientEvent('inventory:client:ItemBox',src, QBCore.Shared.Items[item.name], "remove")
-			TriggerClientEvent('QBCore:Notify', src, "You gave " .. OtherPlayer.PlayerData.charinfo.firstname.." "..OtherPlayer.PlayerData.charinfo.lastname.. " " .. amount .. " " .. item.label .."!")
-			TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, true)
-			TriggerClientEvent('qb-inventory:client:giveAnim', src)
-			TriggerClientEvent('qb-inventory:client:giveAnim', target)
+		if Player.Functions.RemoveItem(item.name, amount, item.slot) then
+			if OtherPlayer.Functions.AddItem(item.name, amount, false, item.info) then
+				TriggerClientEvent('inventory:client:ItemBox',target, QBCore.Shared.Items[item.name], "add")
+				TriggerClientEvent('QBCore:Notify', target, "You Received "..amount..' '..item.label.." From "..Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname)
+				TriggerClientEvent("inventory:client:UpdatePlayerInventory", target, true)
+				TriggerClientEvent('inventory:client:ItemBox',src, QBCore.Shared.Items[item.name], "remove")
+				TriggerClientEvent('QBCore:Notify', src, "You gave " .. OtherPlayer.PlayerData.charinfo.firstname.." "..OtherPlayer.PlayerData.charinfo.lastname.. " " .. amount .. " " .. item.label .."!")
+				TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, true)
+				TriggerClientEvent('qb-inventory:client:giveAnim', src)
+				TriggerClientEvent('qb-inventory:client:giveAnim', target)
+			else
+				TriggerClientEvent('QBCore:Notify', src,  "The other players inventory is full!", "error")
+				TriggerClientEvent('QBCore:Notify', target,  "Your inventory is full!", "error")
+				TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, false)
+				TriggerClientEvent("inventory:client:UpdatePlayerInventory", target, false)
+			end
 		else
-			TriggerClientEvent('QBCore:Notify', src,  "The other players inventory is full!", "error")
-			TriggerClientEvent('QBCore:Notify', target,  "Your inventory is full!", "error")
-			TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, false)
-			TriggerClientEvent("inventory:client:UpdatePlayerInventory", target, false)
+			TriggerClientEvent('QBCore:Notify', src,  "You do not have enough of the item!", "error")
 		end
 	else
 		TriggerClientEvent('QBCore:Notify', src, "You do not have enough items to transfer")
