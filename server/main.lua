@@ -101,7 +101,7 @@ local function SaveStashItems(stashId, items)
 			for slot, item in pairs(items) do
 				item.description = nil
 			end
-			MySQL.Sync.fetchScalar('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+			MySQL.Async.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
 				['stash'] = stashId,
 				['items'] = json.encode(items)
 			})
@@ -222,7 +222,7 @@ local function SaveOwnedVehicleItems(plate, items)
 			for slot, item in pairs(items) do
 				item.description = nil
 			end
-			MySQL.Sync.fetchScalar('INSERT INTO trunkitems (plate, items) VALUES (:plate, :items) ON DUPLICATE KEY UPDATE items = :items', {
+			MySQL.Async.insert('INSERT INTO trunkitems (plate, items) VALUES (:plate, :items) ON DUPLICATE KEY UPDATE items = :items', {
 				['plate'] = plate,
 				['items'] = json.encode(items)
 			})
@@ -343,7 +343,7 @@ local function SaveOwnedGloveboxItems(plate, items)
 			for slot, item in pairs(items) do
 				item.description = nil
 			end
-			MySQL.Sync.fetchScalar('INSERT INTO gloveboxitems (plate, items) VALUES (:plate, :items) ON DUPLICATE KEY UPDATE items = :items', {
+			MySQL.Async.insert('INSERT INTO gloveboxitems (plate, items) VALUES (:plate, :items) ON DUPLICATE KEY UPDATE items = :items', {
 				['plate'] = plate,
 				['items'] = json.encode(items)
 			})
@@ -1396,7 +1396,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 end)
 
 RegisterNetEvent('qb-inventory:server:SaveStashItems', function(stashId, items)
-    MySQL.Sync.fetchScalar('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+    MySQL.Async.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
         ['stash'] = stashId,
         ['items'] = json.encode(items)
     })
