@@ -242,7 +242,6 @@ body {
 }
 
 .item-slot:hover {
-    transition: ease 0.3s;
     background-color: rgb(48 48 56 / 30%) !important;
 }
 
