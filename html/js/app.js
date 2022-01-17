@@ -2931,11 +2931,11 @@ var requiredItemOpen = false;
         if (itemBoxtimer !== null) {
             clearTimeout(itemBoxtimer);
         }
-        var type = "Used 1x";
+        var type = "Used " + data.itemAmount + "x";
         if (data.type == "add") {
-            type = "Received 1x";
+          type = "Received " + data.itemAmount + "x";
         } else if (data.type == "remove") {
-            type = "Removed 1x";
+          type = "Removed " + data.itemAmount + "x";
         }
 
         var $itembox = $(".itembox-container.template").clone();
