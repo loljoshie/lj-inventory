@@ -1,6 +1,6 @@
 ![LJ Inventory](https://user-images.githubusercontent.com/91661118/146313051-665337bf-ed92-4ed0-bbb9-6ee9613f670d.png)
 
-# 🎅🎄🎁 lj-inventory used with QBCore Framework 🍪🦌🤶
+# lj-inventory used with QBCore Framework
 
 Join my Discord laboratory for updates, support, and special early testing!
 <br>
