@@ -286,13 +286,16 @@ RegisterNetEvent('weapons:client:SetCurrentWeapon', function(data, bool)
     end
 end)
 
-RegisterNetEvent('inventory:client:ItemBox', function(itemData, type)
+RegisterNetEvent('inventory:client:ItemBox', function(itemData, type, amount)
+    amount = amount or 1
     SendNUIMessage({
         action = "itemBox",
         item = itemData,
-        type = type
+        type = type,
+        itemAmount = amount
     })
 end)
+
 
 RegisterNetEvent('inventory:client:requiredItems', function(items, bool)
     local itemTable = {}
