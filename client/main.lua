@@ -153,7 +153,7 @@ local function openAnim()
     LoadAnimDict('pickup_object')
     TaskPlayAnim(PlayerPedId(),'pickup_object', 'putdown_low', 5.0, 1.5, 1.0, 48, 0.0, 0, 0, 0)
     Wait(500)
-    ClearPedTasks(PlayerPedId())
+    StopEntityAnim(PlayerPedId(), "putdown_low", "pickup_object", 3)
 end
 
 local function ItemsToItemInfo()
