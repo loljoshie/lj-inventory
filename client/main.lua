@@ -86,10 +86,7 @@ end
 
 local function OpenTrunk()
     local vehicle = QBCore.Functions.GetClosestVehicle()
-    while (not HasAnimDictLoaded("amb@prop_human_bum_bin@idle_b")) do
-        RequestAnimDict("amb@prop_human_bum_bin@idle_b")
-        Wait(100)
-    end
+    LoadAnimDict("amb@prop_human_bum_bin@idle_b")
     TaskPlayAnim(PlayerPedId(), "amb@prop_human_bum_bin@idle_b", "idle_d", 4.0, 4.0, -1, 50, 0, false, false, false)
     if (IsBackEngine(GetEntityModel(vehicle))) then
         SetVehicleDoorOpen(vehicle, 4, false, false)
@@ -100,10 +97,7 @@ end
 
 local function CloseTrunk()
     local vehicle = QBCore.Functions.GetClosestVehicle()
-    while (not HasAnimDictLoaded("amb@prop_human_bum_bin@idle_b")) do
-        RequestAnimDict("amb@prop_human_bum_bin@idle_b")
-        Wait(100)
-    end
+    LoadAnimDict("amb@prop_human_bum_bin@idle_b")
     TaskPlayAnim(PlayerPedId(), "amb@prop_human_bum_bin@idle_b", "exit", 4.0, 4.0, -1, 50, 0, false, false, false)
     if (IsBackEngine(GetEntityModel(vehicle))) then
         SetVehicleDoorShut(vehicle, 4, false)
@@ -142,10 +136,10 @@ local function ToggleHotbar(toggle)
     end
 end
 
-local function LoadAnimDict( dict )
-    while ( not HasAnimDictLoaded( dict ) ) do
-        RequestAnimDict( dict )
-        Wait( 5 )
+local function LoadAnimDict(dict)
+    while (not HasAnimDictLoaded(dict)) do
+        RequestAnimDict(dict)
+        Wait(5)
     end
 end
 
@@ -513,10 +507,7 @@ RegisterNetEvent('inventory:client:DropItemAnim', function()
     SendNUIMessage({
         action = "close",
     })
-    RequestAnimDict("pickup_object")
-    while not HasAnimDictLoaded("pickup_object") do
-        Wait(7)
-    end
+    LoadAnimDict("pickup_object")
     TaskPlayAnim(ped, "pickup_object" ,"pickup_low" ,8.0, -8.0, -1, 1, 0, false, false, false )
     Wait(2000)
     ClearPedTasks(ped)
