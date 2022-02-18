@@ -10,8 +10,6 @@ Config.BinObjects = {
     "prop_bin_05a",
 }
 
-Config.CraftingObject = `prop_toolchest_05`
-
 Config.VendingItem = {
     [1] = {
         name = "kurkakola",
@@ -95,11 +93,11 @@ Config.CraftingItems = {
             ["plastic"] = 50,
             ["aluminum"] = 30,
             ["iron"] = 17,
-            ["electronickit"] = 2,
+            ["electronickit"] = 1,
         },
         type = "item",
         slot = 5,
-        threshold = 110,
+        threshold = 120,
         points = 5,
     },
     [6] = {
@@ -202,9 +200,8 @@ Config.CraftingItems = {
     },
 }
 
-Config.AttachmentCraftingLocation = vector3(88.91, 3743.88, 40.77)
-
 Config.AttachmentCrafting = {
+    ['location'] = vector3(88.91, 3743.88, 40.77), 
     ["items"] = {
         [1] = {
             name = "pistol_extendedclip",
@@ -235,32 +232,34 @@ Config.AttachmentCrafting = {
             points = 2,
         },
         [3] = {
-            name = "smg_extendedclip",
+            name = "assaultrifle_extendedclip",
             amount = 50,
             info = {},
             costs = {
                 ["metalscrap"] = 190,
                 ["steel"] = 305,
                 ["rubber"] = 85,
+                ["smg_extendedclip"] = 1,
             },
             type = "item",
             slot = 3,
             threshold = 25,
-            points = 3,
+            points = 8,
         },
         [4] = {
-            name = "microsmg_extendedclip",
+            name = "assaultrifle_drum",
             amount = 50,
             info = {},
             costs = {
                 ["metalscrap"] = 205,
                 ["steel"] = 340,
                 ["rubber"] = 110,
+                ["smg_extendedclip"] = 2,
             },
             type = "item",
             slot = 4,
             threshold = 50,
-            points = 4,
+            points = 8,
         },
         [5] = {
             name = "smg_drum",
@@ -274,10 +273,10 @@ Config.AttachmentCrafting = {
             type = "item",
             slot = 5,
             threshold = 75,
-            points = 5,
+            points = 3,
         },
         [6] = {
-            name = "smg_scope",
+            name = "smg_extendedclip",
             amount = 50,
             info = {},
             costs = {
@@ -288,37 +287,35 @@ Config.AttachmentCrafting = {
             type = "item",
             slot = 6,
             threshold = 100,
-            points = 6,
+            points = 4,
         },
         [7] = {
-            name = "assaultrifle_extendedclip",
+            name = "microsmg_extendedclip",
             amount = 50,
             info = {},
             costs = {
                 ["metalscrap"] = 270,
                 ["steel"] = 435,
                 ["rubber"] = 155,
-                ["smg_extendedclip"] = 1,
             },
             type = "item",
             slot = 7,
             threshold = 150,
-            points = 7,
+            points = 5,
         },
         [8] = {
-            name = "assaultrifle_drum",
+            name = "smg_scope",
             amount = 50,
             info = {},
             costs = {
                 ["metalscrap"] = 300,
                 ["steel"] = 469,
                 ["rubber"] = 170,
-                ["smg_extendedclip"] = 2,
             },
             type = "item",
             slot = 8,
             threshold = 200,
-            points = 8,
+            points = 6,
         },
     }
 }
