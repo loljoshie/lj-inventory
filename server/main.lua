@@ -41,16 +41,16 @@ end
 -- Shop Items
 local function SetupShopItems(shop, shopItems)
 	local items = {}
-	if shopItems and next(shopItems) then
+	if shopItems ~= nil and next(shopItems) ~= nil then
 		for k, item in pairs(shopItems) do
 			local itemInfo = QBCore.Shared.Items[item.name:lower()]
 			if itemInfo then
 				items[item.slot] = {
 					name = itemInfo["name"],
 					amount = tonumber(item.amount),
-					info = item.info or "",
+					info = item.info ~= nil and item.info or "",
 					label = itemInfo["label"],
-					description = itemInfo["description"] or "",
+					description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 					weight = itemInfo["weight"],
 					type = itemInfo["type"],
 					unique = itemInfo["unique"],
@@ -78,9 +78,9 @@ local function GetStashItems(stashId)
 					items[item.slot] = {
 						name = itemInfo["name"],
 						amount = tonumber(item.amount),
-						info = item.info or "",
+						info = item.info ~= nil and item.info or "",
 						label = itemInfo["label"],
-						description = itemInfo["description"] or "",
+						description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 						weight = itemInfo["weight"],
 						type = itemInfo["type"],
 						unique = itemInfo["unique"],
@@ -97,7 +97,7 @@ end
 
 local function SaveStashItems(stashId, items)
 	if Stashes[stashId].label ~= "Stash-None" then
-		if items then
+		if items ~= nil then
 			for slot, item in pairs(items) do
 				item.description = nil
 			end
@@ -114,16 +114,16 @@ local function AddToStash(stashId, slot, otherslot, itemName, amount, info)
 	local amount = tonumber(amount)
 	local ItemData = QBCore.Shared.Items[itemName]
 	if not ItemData.unique then
-		if Stashes[stashId].items[slot] and Stashes[stashId].items[slot].name == itemName then
+		if Stashes[stashId].items[slot] ~= nil and Stashes[stashId].items[slot].name == itemName then
 			Stashes[stashId].items[slot].amount = Stashes[stashId].items[slot].amount + amount
 		else
 			local itemInfo = QBCore.Shared.Items[itemName:lower()]
 			Stashes[stashId].items[slot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -133,14 +133,14 @@ local function AddToStash(stashId, slot, otherslot, itemName, amount, info)
 			}
 		end
 	else
-		if Stashes[stashId].items[slot] and Stashes[stashId].items[slot].name == itemName then
+		if Stashes[stashId].items[slot] ~= nil and Stashes[stashId].items[slot].name == itemName then
 			local itemInfo = QBCore.Shared.Items[itemName:lower()]
 			Stashes[stashId].items[otherslot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -153,9 +153,9 @@ local function AddToStash(stashId, slot, otherslot, itemName, amount, info)
 			Stashes[stashId].items[slot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -199,9 +199,9 @@ local function GetOwnedVehicleItems(plate)
 					items[item.slot] = {
 						name = itemInfo["name"],
 						amount = tonumber(item.amount),
-						info = item.info or "",
+						info = item.info ~= nil and item.info or "",
 						label = itemInfo["label"],
-						description = itemInfo["description"] or "",
+						description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 						weight = itemInfo["weight"],
 						type = itemInfo["type"],
 						unique = itemInfo["unique"],
@@ -243,9 +243,9 @@ local function AddToTrunk(plate, slot, otherslot, itemName, amount, info)
 			Trunks[plate].items[slot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -260,9 +260,9 @@ local function AddToTrunk(plate, slot, otherslot, itemName, amount, info)
 			Trunks[plate].items[otherslot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -275,9 +275,9 @@ local function AddToTrunk(plate, slot, otherslot, itemName, amount, info)
 			Trunks[plate].items[slot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -320,9 +320,9 @@ local function GetOwnedVehicleGloveboxItems(plate)
 					items[item.slot] = {
 						name = itemInfo["name"],
 						amount = tonumber(item.amount),
-						info = item.info or "",
+						info = item.info ~= nil and item.info or "",
 						label = itemInfo["label"],
-						description = itemInfo["description"] or "",
+						description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 						weight = itemInfo["weight"],
 						type = itemInfo["type"],
 						unique = itemInfo["unique"],
@@ -364,9 +364,9 @@ local function AddToGlovebox(plate, slot, otherslot, itemName, amount, info)
 			Gloveboxes[plate].items[slot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -381,9 +381,9 @@ local function AddToGlovebox(plate, slot, otherslot, itemName, amount, info)
 			Gloveboxes[plate].items[otherslot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -396,9 +396,9 @@ local function AddToGlovebox(plate, slot, otherslot, itemName, amount, info)
 			Gloveboxes[plate].items[slot] = {
 				name = itemInfo["name"],
 				amount = amount,
-				info = info or "",
+				info = info ~= nil and info or "",
 				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
+				description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 				weight = itemInfo["weight"],
 				type = itemInfo["type"],
 				unique = itemInfo["unique"],
@@ -438,9 +438,9 @@ local function AddToDrop(dropId, slot, itemName, amount, info)
 		Drops[dropId].items[slot] = {
 			name = itemInfo["name"],
 			amount = amount,
-			info = info or "",
+			info = info ~= nil and info or "",
 			label = itemInfo["label"],
-			description = itemInfo["description"] or "",
+			description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 			weight = itemInfo["weight"],
 			type = itemInfo["type"],
 			unique = itemInfo["unique"],
@@ -460,12 +460,14 @@ local function RemoveFromDrop(dropId, slot, itemName, amount)
 			Drops[dropId].items[slot] = nil
 			if next(Drops[dropId].items) == nil then
 				Drops[dropId].items = {}
+				--TriggerClientEvent("inventory:client:RemoveDropItem", -1, dropId)
 			end
 		end
 	else
 		Drops[dropId].items[slot] = nil
 		if Drops[dropId].items == nil then
 			Drops[dropId].items[slot] = nil
+			--TriggerClientEvent("inventory:client:RemoveDropItem", -1, dropId)
 		end
 	end
 end
@@ -500,9 +502,9 @@ local function CreateNewDrop(source, fromSlot, toSlot, itemAmount)
 		Drops[dropId].items[toSlot] = {
 			name = itemInfo["name"],
 			amount = itemAmount,
-			info = itemData.info or "",
+			info = itemData.info ~= nil and itemData.info or "",
 			label = itemInfo["label"],
-			description = itemInfo["description"] or "",
+			description = itemInfo["description"] ~= nil and itemInfo["description"] or "",
 			weight = itemInfo["weight"],
 			type = itemInfo["type"],
 			unique = itemInfo["unique"],
@@ -594,8 +596,6 @@ RegisterNetEvent('inventory:server:SetIsOpenState', function(IsOpen, type, id)
 			Trunks[id].isOpen = false
 		elseif type == "glovebox" then
 			Gloveboxes[id].isOpen = false
-		elseif type == "drop" then
-			Drops[id].isOpen = false
 		end
 	end
 end)
@@ -605,13 +605,13 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 	local ply = Player(src)
 	local Player = QBCore.Functions.GetPlayer(src)
 	if not ply.state.inv_busy then
-		if name and id then
+		if name ~= nil and id ~= nil then
 			local secondInv = {}
 			if name == "stash" then
-				if Stashes[id] then
+				if Stashes[id] ~= nil then
 					if Stashes[id].isOpen then
 						local Target = QBCore.Functions.GetPlayer(Stashes[id].isOpen)
-						if Target then
+						if Target ~= nil then
 							TriggerClientEvent('inventory:client:CheckOpenState', Stashes[id].isOpen, name, id, Stashes[id].label)
 						else
 							Stashes[id].isOpen = false
@@ -620,16 +620,16 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				end
 				local maxweight = 1000000
 				local slots = 50
-				if other then
-					maxweight = other.maxweight or 1000000
-					slots = other.slots or 50
+				if other ~= nil then
+					maxweight = other.maxweight ~= nil and other.maxweight or 1000000
+					slots = other.slots ~= nil and other.slots or 50
 				end
 				secondInv.name = "stash-"..id
 				secondInv.label = "Stash-"..id
 				secondInv.maxweight = maxweight
 				secondInv.inventory = {}
 				secondInv.slots = slots
-				if Stashes[id] and Stashes[id].isOpen then
+				if Stashes[id] ~= nil and Stashes[id].isOpen then
 					secondInv.name = "none-inv"
 					secondInv.label = "Stash-None"
 					secondInv.maxweight = 1000000
@@ -637,7 +637,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					secondInv.slots = 0
 				else
 					local stashItems = GetStashItems(id)
-					if next(stashItems) then
+					if next(stashItems) ~= nil then
 						secondInv.inventory = stashItems
 						Stashes[id] = {}
 						Stashes[id].items = stashItems
@@ -651,10 +651,10 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					end
 				end
 			elseif name == "trunk" then
-				if Trunks[id] then
+				if Trunks[id] ~= nil then
 					if Trunks[id].isOpen then
 						local Target = QBCore.Functions.GetPlayer(Trunks[id].isOpen)
-						if Target then
+						if Target ~= nil then
 							TriggerClientEvent('inventory:client:CheckOpenState', Trunks[id].isOpen, name, id, Trunks[id].label)
 						else
 							Trunks[id].isOpen = false
@@ -663,25 +663,25 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				end
 				secondInv.name = "trunk-"..id
 				secondInv.label = "Trunk-"..id
-				secondInv.maxweight = other.maxweight or 60000
+				secondInv.maxweight = other.maxweight ~= nil and other.maxweight or 60000
 				secondInv.inventory = {}
-				secondInv.slots = other.slots or 50
-				if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and Player.PlayerData.job.name ~= "police") then
+				secondInv.slots = other.slots ~= nil and other.slots or 50
+				if (Trunks[id] ~= nil and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] ~= nil and Player.PlayerData.job.name ~= "police") then
 					secondInv.name = "none-inv"
 					secondInv.label = "Trunk-None"
-					secondInv.maxweight = other.maxweight or 60000
+					secondInv.maxweight = other.maxweight ~= nil and other.maxweight or 60000
 					secondInv.inventory = {}
 					secondInv.slots = 0
 				else
-					if id then
+					if id ~= nil then
 						local ownedItems = GetOwnedVehicleItems(id)
-						if IsVehicleOwned(id) and next(ownedItems) then
+						if IsVehicleOwned(id) and next(ownedItems) ~= nil then
 							secondInv.inventory = ownedItems
 							Trunks[id] = {}
 							Trunks[id].items = ownedItems
 							Trunks[id].isOpen = src
 							Trunks[id].label = secondInv.label
-						elseif Trunks[id] and not Trunks[id].isOpen then
+						elseif Trunks[id] ~= nil and not Trunks[id].isOpen then
 							secondInv.inventory = Trunks[id].items
 							Trunks[id].isOpen = src
 							Trunks[id].label = secondInv.label
@@ -694,10 +694,10 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					end
 				end
 			elseif name == "glovebox" then
-				if Gloveboxes[id] then
+				if Gloveboxes[id] ~= nil then
 					if Gloveboxes[id].isOpen then
 						local Target = QBCore.Functions.GetPlayer(Gloveboxes[id].isOpen)
-						if Target then
+						if Target ~= nil then
 							TriggerClientEvent('inventory:client:CheckOpenState', Gloveboxes[id].isOpen, name, id, Gloveboxes[id].label)
 						else
 							Gloveboxes[id].isOpen = false
@@ -709,7 +709,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				secondInv.maxweight = 10000
 				secondInv.inventory = {}
 				secondInv.slots = 5
-				if Gloveboxes[id] and Gloveboxes[id].isOpen then
+				if Gloveboxes[id] ~= nil and Gloveboxes[id].isOpen then
 					secondInv.name = "none-inv"
 					secondInv.label = "Glovebox-None"
 					secondInv.maxweight = 10000
@@ -717,11 +717,11 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					secondInv.slots = 0
 				else
 					local ownedItems = GetOwnedVehicleGloveboxItems(id)
-					if Gloveboxes[id] and not Gloveboxes[id].isOpen then
+					if Gloveboxes[id] ~= nil and not Gloveboxes[id].isOpen then
 						secondInv.inventory = Gloveboxes[id].items
 						Gloveboxes[id].isOpen = src
 						Gloveboxes[id].label = secondInv.label
-					elseif IsVehicleOwned(id) and next(ownedItems) then
+					elseif IsVehicleOwned(id) and next(ownedItems) ~= nil then
 						secondInv.inventory = ownedItems
 						Gloveboxes[id] = {}
 						Gloveboxes[id].items = ownedItems
@@ -762,7 +762,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				secondInv.slots = #other.items
 			elseif name == "otherplayer" then
 				local OtherPlayer = QBCore.Functions.GetPlayer(tonumber(id))
-				if OtherPlayer then
+				if OtherPlayer ~= nil then
 					secondInv.name = "otherplayer-"..id
 					secondInv.label = "Player-"..id
 					secondInv.maxweight = QBCore.Config.Player.MaxWeight
@@ -775,17 +775,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					Wait(250)
 				end
 			else
-				if Drops[id] then
-					if Drops[id].isOpen then
-						local Target = QBCore.Functions.GetPlayer(Drops[id].isOpen)
-						if Target then
-							TriggerClientEvent('inventory:client:CheckOpenState', Drops[id].isOpen, name, id, Drops[id].label)
-						else
-							Drops[id].isOpen = false
-						end
-					end
-				end
-				if Drops[id] and not Drops[id].isOpen then
+				if Drops[id] ~= nil and not Drops[id].isOpen then
 					secondInv.name = id
 					secondInv.label = "Dropped-"..tostring(id)
 					secondInv.maxweight = 100000
@@ -799,6 +789,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					secondInv.maxweight = 100000
 					secondInv.inventory = {}
 					secondInv.slots = 0
+					--Drops[id].label = secondInv.label
 				end
 			end
 			TriggerClientEvent("inventory:client:OpenInventory", src, {}, Player.PlayerData.items, secondInv)
@@ -812,7 +803,7 @@ end)
 
 RegisterNetEvent('inventory:server:SaveInventory', function(type, id)
 	if type == "trunk" then
-		if IsVehicleOwned(id) then
+		if (IsVehicleOwned(id)) then
 			SaveOwnedVehicleItems(id, Trunks[id].items)
 		else
 			Trunks[id].isOpen = false
@@ -826,7 +817,7 @@ RegisterNetEvent('inventory:server:SaveInventory', function(type, id)
 	elseif type == "stash" then
 		SaveStashItems(id, Stashes[id].items)
 	elseif type == "drop" then
-		if Drops[id] then
+		if Drops[id] ~= nil then
 			Drops[id].isOpen = false
 			if Drops[id].items == nil or next(Drops[id].items) == nil then
 				Drops[id] = nil
@@ -840,10 +831,11 @@ RegisterNetEvent('inventory:server:UseItemSlot', function(slot)
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 	local itemData = Player.Functions.GetItemBySlot(slot)
-	if itemData then
+
+	if itemData ~= nil then
 		local itemInfo = QBCore.Shared.Items[itemData.name]
 		if itemData.type == "weapon" then
-			if itemData.info.quality then
+			if itemData.info.quality ~= nil then
 				if itemData.info.quality > 0 then
 					TriggerClientEvent("inventory:client:UseWeapon", src, itemData, true)
 				else
@@ -865,7 +857,7 @@ RegisterNetEvent('inventory:server:UseItem', function(inventory, item)
 	local Player = QBCore.Functions.GetPlayer(src)
 	if inventory == "player" or inventory == "hotbar" then
 		local itemData = Player.Functions.GetItemBySlot(item.slot)
-		if itemData then
+		if itemData ~= nil then
 			TriggerClientEvent("QBCore:Client:UseItem", src, itemData)
 		end
 	end
@@ -874,8 +866,8 @@ end)
 RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, toInventory, fromSlot, toSlot, fromAmount, toAmount)
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-	fromSlot = tonumber(fromSlot)
-	toSlot = tonumber(toSlot)
+	local fromSlot = tonumber(fromSlot)
+	local toSlot = tonumber(toSlot)
 
 	if (fromInventory == "player" or fromInventory == "hotbar") and (QBCore.Shared.SplitStr(toInventory, "-")[1] == "itemshop" or toInventory == "crafting") then
 		return
@@ -1410,17 +1402,13 @@ RegisterNetEvent('qb-inventory:server:SaveStashItems', function(stashId, items)
     })
 end)
 
-RegisterServerEvent("inventory:server:GiveItem", function(target, name, amount, slot)
+RegisterServerEvent("inventory:server:GiveItem", function(target, inventory, item, amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local OtherPlayer = QBCore.Functions.GetPlayer(tonumber(target))
     local dist = #(GetEntityCoords(GetPlayerPed(src))-GetEntityCoords(GetPlayerPed(target)))
 	if Player == OtherPlayer then return TriggerClientEvent('QBCore:Notify', src, "You can't give yourself an item?") end
 	if dist > 2 then return TriggerClientEvent('QBCore:Notify', src, "You are too far away to give items!") end
-	local item = Player.Functions.GetItemBySlot(slot)
-	if not item then TriggerClientEvent('QBCore:Notify', src, "Item you tried giving not found!"); return end
-	if item.name ~= name then TriggerClientEvent('QBCore:Notify', src, "Incorrect item found try again!"); return end
-
 	if amount <= item.amount then
 		if amount == 0 then
 			amount = item.amount
@@ -1433,17 +1421,16 @@ RegisterServerEvent("inventory:server:GiveItem", function(target, name, amount, 
 				TriggerClientEvent('inventory:client:ItemBox',src, QBCore.Shared.Items[item.name], "remove")
 				TriggerClientEvent('QBCore:Notify', src, "You gave " .. OtherPlayer.PlayerData.charinfo.firstname.." "..OtherPlayer.PlayerData.charinfo.lastname.. " " .. amount .. " " .. item.label .."!")
 				TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, true)
-				TriggerClientEvent('inventory:client:giveAnim', src)
-				TriggerClientEvent('inventory:client:giveAnim', target)
+				TriggerClientEvent('qb-inventory:client:giveAnim', src)
+				TriggerClientEvent('qb-inventory:client:giveAnim', target)
 			else
-				Player.Functions.AddItem(item.name, amount, item.slot, item.info)
 				TriggerClientEvent('QBCore:Notify', src,  "The other players inventory is full!", "error")
 				TriggerClientEvent('QBCore:Notify', target,  "Your inventory is full!", "error")
 				TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, false)
 				TriggerClientEvent("inventory:client:UpdatePlayerInventory", target, false)
 			end
 		else
-			TriggerClientEvent('QBCore:Notify', src,  "You do not have enough of the item", "error")
+			TriggerClientEvent('QBCore:Notify', src,  "You do not have enough of the item!", "error")
 		end
 	else
 		TriggerClientEvent('QBCore:Notify', src, "You do not have enough items to transfer")
@@ -1491,9 +1478,9 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 	local Player = QBCore.Functions.GetPlayer(tonumber(args[1]))
 	local amount = tonumber(args[3])
 	local itemData = QBCore.Shared.Items[tostring(args[2]):lower()]
-	if Player then
+	if Player ~= nil then
 		if amount > 0 then
-			if itemData then
+			if itemData ~= nil then
 				-- check iteminfo
 				local info = {}
 				if itemData["name"] == "id_card" then
@@ -1563,17 +1550,16 @@ end, "god")
 QBCore.Functions.CreateUseableItem("snowball", function(source, item)
 	local Player = QBCore.Functions.GetPlayer(source)
 	local itemData = Player.Functions.GetItemBySlot(item.slot)
-	if Player.Functions.GetItemBySlot(item.slot) then
+	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
         TriggerClientEvent("inventory:client:UseSnowball", source, itemData.amount)
     end
 end)
 
 QBCore.Functions.CreateUseableItem("driver_license", function(source, item)
-	local PlayerPed = GetPlayerPed(source)
-	local PlayerCoords = GetEntityCoords(PlayerPed)
 	for k, v in pairs(QBCore.Functions.GetPlayers()) do
+		local PlayerPed = GetPlayerPed(source)
 		local TargetPed = GetPlayerPed(v)
-		local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
+		local dist = #(GetEntityCoords(PlayerPed) - GetEntityCoords(TargetPed))
 		if dist < 3.0 then
 			TriggerClientEvent('chat:addMessage', v,  {
 					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>First Name:</strong> {1} <br><strong>Last Name:</strong> {2} <br><strong>Birth Date:</strong> {3} <br><strong>Licenses:</strong> {4}</div></div>',
@@ -1591,11 +1577,10 @@ QBCore.Functions.CreateUseableItem("driver_license", function(source, item)
 end)
 
 QBCore.Functions.CreateUseableItem("id_card", function(source, item)
-	local PlayerPed = GetPlayerPed(source)
-	local PlayerCoords = GetEntityCoords(PlayerPed)
 	for k, v in pairs(QBCore.Functions.GetPlayers()) do
+		local PlayerPed = GetPlayerPed(source)
 		local TargetPed = GetPlayerPed(v)
-		local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
+		local dist = #(GetEntityCoords(PlayerPed) - GetEntityCoords(TargetPed))
 		if dist < 3.0 then
 			local gender = "Man"
 			if item.info.gender == 1 then
