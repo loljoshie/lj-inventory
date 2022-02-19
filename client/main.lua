@@ -151,8 +151,11 @@ local function LoadAnimDict(dict)
 end
 
 local function openAnim()
+    local ped = PlayerPedId()
     LoadAnimDict('pickup_object')
-    TaskPlayAnim(PlayerPedId(),'pickup_object', 'putdown_low', 5.0, 1.5, 1.0, 48, 0.0, 0, 0, 0)
+    TaskPlayAnim(ped,'pickup_object', 'putdown_low', 5.0, 1.5, 1.0, 48, 0.0, 0, 0, 0)
+    Wait(500)
+    StopAnimTask(ped, 'pickup_object', 'putdown_low', 1.0)
 end
 
 local function ItemsToItemInfo()
