@@ -758,6 +758,8 @@ RegisterNUICallback("CloseInventory", function()
         TriggerServerEvent("inventory:server:SaveInventory", "drop", CurrentDrop)
         CurrentDrop = nil
     end
+    Wait(50)
+    TriggerScreenblurFadeOut(1000)
     SetNuiFocus(false, false)
     inInventory = false
 end)
