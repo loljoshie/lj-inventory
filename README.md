@@ -22,6 +22,11 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * [qb-drugs](https://github.com/qbcore-framework/qb-drugs)
 * [qb-shops](https://github.com/qbcore-framework/qb-shops)
 
+# How to install lj-inventory
+* Download source files from github
+* Drag source files into your resources folder
+* Rename folder from `lj-inventory-main` to `lj-inventory`
+
 # How to easily create new custom inventory images
 ### Video Guide Installation
 * [**[QBCore] [lj-inventory] - How to create custom images using Photoshop**](https://youtu.be/EAe7PgPq1zs)
