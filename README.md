@@ -4,7 +4,7 @@
 
 Join my Discord laboratory for updates, support, and special early testing!
 <br>
-https://discord.gg/loljoshie (without-vanity url: https://discord.gg/HH6uTcBfew)
+https://discord.gg/ljlabs (without-vanity url: https://discord.gg/HH6uTcBfew)
 
 So, I know the NoPixel 3.5 inventory update is a very controversial topic for most people. I wasn't a huge fan of it myself at first, but I liked the overall idea and concept behind it. So, here's my own take and spin on the design. This is was made off the awesome inventory [ihyajb](https://github.com/ihyajb) made
 <br>
@@ -27,10 +27,6 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * Drag source files into your resources folder
 * Rename folder from `lj-inventory-main` to `lj-inventory`
 
-# How to easily create new custom inventory images
-### Video Guide Installation
-* [**[QBCore] [lj-inventory] - How to create custom images using Photoshop**](https://youtu.be/EAe7PgPq1zs)
-
 # Key Features
 * ALL IMAGES FOLLOW THE SAME DIMENSIONS
 * Easy Photoshop guideline template for creating custom images within lj-inventory
@@ -48,7 +44,7 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 #
 
 # Previews
-### simple guideline psd provided (found in main directory lj-inventory) [WATCH HOW TO](https://youtu.be/EAe7PgPq1zs)
+### simple guideline psd provided (found in main directory lj-inventory)
 ![lj-inventory Guideline](https://user-images.githubusercontent.com/91661118/146315681-c67f542d-e2bc-43ca-9957-7f1971b84268.png)
 ### full inventory
 ![full inventory](https://user-images.githubusercontent.com/91661118/146315750-1199a37e-88e0-4d48-86d3-ae0b85df6a72.png)
