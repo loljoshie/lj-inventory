@@ -12,6 +12,12 @@ p { margin: 0 !important; }
 .text-h6 { color: #fff; }
 .q-card__section.q-card__section--vert.q-pt-none { color: #fff; }
 
+@media screen and (min-width: 2540px) {
+    #itembox-label {
+        min-height: 1.8vh;
+    }
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
