@@ -4,7 +4,7 @@
 
 Join my Discord laboratory for updates, support, and special early testing!
 <br>
-https://discord.gg/ljlabs (without-vanity url: https://discord.gg/HH6uTcBfew)
+https://discord.gg/projectsloth
 
 So, I know the NoPixel 3.5 inventory update is a very controversial topic for most people. I wasn't a huge fan of it myself at first, but I liked the overall idea and concept behind it. So, here's my own take and spin on the design. This is was made off the awesome inventory [ihyajb](https://github.com/ihyajb) made
 <br>
