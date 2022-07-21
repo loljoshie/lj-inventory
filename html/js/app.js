@@ -304,10 +304,7 @@ function FormatAttachmentInfo(data) {
                             '"> <div class="weapon-attachment-label"><p>' +
                             attachment.label +
                             '</p></div> <div class="weapon-attachment-img"><img src="./images/' +
-                            WeaponType +
-                            "_" +
-                            attachment.attachment +
-                            '.png"></div> </div>'
+                            attachment.image + '"></div> </div>'
                         );
                         attachment.id = i;
                         $("#weapon-attachment-" + i).data("AttachmentData", attachment);
