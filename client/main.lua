@@ -695,7 +695,6 @@ end)
 RegisterNUICallback('RemoveAttachment', function(data, cb)
     local ped = PlayerPedId()
     local WeaponData = QBCore.Shared.Items[data.WeaponData.name]
-    print(data.AttachmentData.attachment:gsub("(.*).*_",''))
     data.AttachmentData.attachment = data.AttachmentData.attachment:gsub("(.*).*_",'')
     QBCore.Functions.TriggerCallback('weapons:server:RemoveAttachment', function(NewAttachments)
         if NewAttachments ~= false then
