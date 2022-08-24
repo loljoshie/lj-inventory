@@ -441,7 +441,8 @@ end)
 RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
     local ped = PlayerPedId()
     local weaponName = tostring(weaponData.name)
-    if currentWeapon == weaponName then
+    local weaponinhand = GetCurrentPedWeapon(PlayerPedId())
+    if currentWeapon == weaponName and weaponinhand then
         SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
         Wait(1500)
         RemoveAllPedWeapons(ped, true)
