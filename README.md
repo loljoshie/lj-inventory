@@ -77,3 +77,22 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 
 # Issues and Suggestions
 Please use the GitHub issues system to report issues or make suggestions, when making suggestion, please keep [Suggestion] in the title to make it clear that it is a suggestion.
+
+# Latest QB-CORE UPDATE (PLEASE READ)
+
+MAKE SURE YOUR FOLLOWING RESOURCES ARE UP TO DATE:
+
+QB-CORE
+QB-SMALLRESOURCES
+QB-WEAPONS
+
+ONCE THAT IS DONE, YOU NEED TO REPLACE THE NEWLY ADDED EXPORTS IN QB-CORE.
+
+FOR ME, ALL I HAD TO DO WAS MASS SEARCH MY RESOURCES FOLDER IN VISUAL STUDIO CODE LOOKING FOR 'qb-inventory' and replace it with 'lj-inventory'. 
+SEE IMAGE LINK BELOW, FOLLOW IT EXACTLY.
+
+(https://i.imgur.com/SyQwuoy.png)
+
+I TESTED TRUNKS, STASHES, GLOVEBOXES, DROPPING, CRAFTING, WEAPONS, ADDING/REMOVING/USING ITEMS.
+
+ONE SMALL ISSUE IS WEAPON ATTACHMENTS NOT BEING SHOWN IN THE UI TO REMOVE THEM FROM THE GUN. (I'M NOT GOOD WITH HTML SO)
