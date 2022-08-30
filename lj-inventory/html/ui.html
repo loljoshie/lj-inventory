@@ -1,0 +1,191 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link href="https://cdn.jsdelivr.net/npm/quasar@2.1.0/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- jQuery UI -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/quasar@2.1.0/dist/quasar.umd.prod.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+    </head>
+    <body style="background-color: rgba(0, 0, 0, 0); font-family: 'Roboto', sans-serif !important;">
+        <div id="qbcore-inventory">
+            <div class="inventory-info">
+                <div class="player-inv-info">
+                    <span id="player-inv-label">Player</span><br>
+                    <!-- <img class="weight-img" src="images/weight.png"> -->
+                        <div>
+                            <div id="progressbar">
+                                <div class="pro"></div>
+                            </div>
+                        </div>
+                    <span id="player-inv-weight"></span>
+                </div>
+                <div class="other-inv-info">
+                    <span id="other-inv-label"></span><br>
+                    <!-- <img class="weight-img-other" src="images/weight.png"> -->
+                    <div>
+                        <div id="progressbar-other">
+                            <div class="pro1"></div>
+                        </div>
+                    </div>
+                    <span id="other-inv-weight"></span>
+                </div>
+            </div>
+            <div class="inv-container">
+                <div class="ply-inv-container">
+                    <div class="player-inventory-bg">
+                    <div class="player-inventory" data-inventory="player"></div>
+                </div>
+            </div>
+                <div class="inv-options">
+                    <div class="inv-options-list">
+                        <img class="brand-logo" src="./images/lj-symbol.svg"></img>
+                        <input type="number" id="item-amount" class="inv-option-item" min=1 max="10000" placeholder="Amount" pattern="[0-9]" onfocus="this.value=''" placeholder="" oninput="validity.valid||(value='');"></input>                        <div class="inv-option-item" id="item-use"><p>Use</p></div>
+                        <!-- <img class="inv-option-hand" id= "item-use" src="images/hand-1.png"> -->
+                        <div class="inv-option-item" id="item-give"><p>Give</p></div>
+                        <div class="inv-option-item" id="inv-close"><p>Close</p></div>
+                        <div class="combine-option-container">
+                            <div class="btn-combine CombineItem"><p>Combine</p></div>
+                            <div class="btn-combine SwitchItem"><p>Switch</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oth-inv-container">
+                    <div class="other-inventory-bg">
+                    <div class="other-inventory" data-inventory="other">
+                            <!-- auto generated -->
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="ply-hotbar-inventory" data-inventory="hotbar">
+                    <!-- auto generated -->
+            </div>
+            <div class="ply-iteminfo-container">
+                <div class="ply-iteminfo">
+                    <div class="iteminfo-content">
+                        <div class="item-info-title"></div>
+                        <!-- <div class="item-info-line"></div> -->
+                        <div class="item-info-description"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="inventory-menus" style="min-height: 100vh;">
+                <div class="row justify-center">
+                  <q-btn style="top: 20vh; margin-right: 1vh;" icon="settings_suggest" color="button" @click="options = true"></q-btn>
+                  <q-btn style="top: 20vh;" icon="help" color="button" @click="help = true"></q-btn>
+                  <q-dialog v-model="options">
+                    <q-card>
+                      <q-card-section>
+                        <div class="text-h6">Options</div>
+                      </q-card-section>
+              
+                      <q-card-section class="q-pt-none">
+                        <div class="text-check">
+                            <q-item borderless dark tag="label" v-ripple>
+                                <q-item-section avatar>
+                                <q-checkbox dark v-on:click="select($event)" v-model="showblur" color="checkbox"></q-checkbox>
+                            </q-item-section>
+                            <q-item-section>
+                                <q-item-label class="text-check">Show Background Blur</q-item-label>
+                                <q-item-label caption>Disabling this will remove the background blur effect while inside your inventory.</q-item-label>
+                            </q-item-section>
+                            </q-item>
+                        </div>
+                      </q-card-section>
+              
+                      <q-card-actions style="margin-bottom: 2vh; margin-right: 2vh!important;"align="right">
+                        <q-btn color="button" text-color="white" label="CLOSE" v-close-popup></q-btn>
+                      </q-card-actions>
+                    </q-card>
+                  </q-dialog>
+
+                  <q-dialog position="right" v-model="help">
+                    <q-card style="max-width: 786px; padding: 40px 20px 40px 30px; bottom: 2.5vh; right: 2.25vw;">
+                      <q-card-section>
+                        <div class="text-h6">Help:</div>
+                      </q-card-section>
+              
+                      <q-card-section class="q-pt-none">
+                        To move a full stack make sure the <b>AMOUNT FIELD</b> is empty. You can type the specific <b>NUMBER AMOUNT</b> for how much you would like to move. To <b>USE</b> an item, drag it into the middle option titled "USE" or you can <b>DOUBLE CLICK</b>. The <b>AMOUNT FIELD</b> will NOT reset when you close your inventory, so make sure you get in the habit of clearing the number!
+                      </q-card-section>
+
+                      <q-card-section>
+                        <div class="text-h6">Middle Options:</div>
+                      </q-card-section>
+
+                      <q-card-section class="q-pt-none">
+                        <ul>
+                            <li>Use: Drag item to this button to use that item</li>
+                            <li>Give: Give item to other citizens around you</li>
+                            <li>Combine: Combine certain items together</li>
+                            <li>Switch: Switch current item</li>
+                            <li>Attachments: When you have items you can attach to your weapons</li>
+                            <li>Close: Another way to close the inventory</li>
+                        </ul>
+                      </q-card-section>
+
+                      <q-card-section>
+                        <div class="text-h6">Keybinds (default):</div>
+                      </q-card-section>
+
+                      <q-card-section class="q-pt-none">
+                        <ul>
+                            <li>Left Click: Normal drag</li>
+                            <li>Right Click: Drop item or move single item storage</li>
+                            <li>Double Click: Use Item</li>
+                            <li>Number 0-9: Will input the typed number</li>
+                            <li>BACKSPACE Key: Will set <b>AMOUNT</b> to blank/move entire item stack</li>
+                        </ul>
+                      </q-card-section>
+
+                      <q-card-section>
+                        <div class="text-h6">Shops:</div>
+                      </q-card-section>
+                      
+                      <q-card-section class="q-pt-none">
+                        Put in the <b>AMOUNT</b> you want to buy in the <b>AMOUNT FIELD</b> and then drag the shop item into your inventory
+                      </q-card-section>
+                    </q-card>
+                  </q-dialog>
+                </div>
+              </div>
+            <div class="inv-background"></div>
+        </div>
+        <div class="weapon-attachments-container">
+            <div class="weapon-attachments-container-title">Pistol | <span style="font-size: 2vh;">9mm</span></div>
+            <div class="weapon-attachments-container-description">This is a water gun yaay ...</div>
+            <div class="weapon-attachments-container-details"><span style="font-weight: bold; letter-spacing: .1vh;">Serial Number</span><br> 12345678<br><br><span style="font-weight: bold; letter-spacing: .1vh;">Durability</span> <div class="weapon-attachments-container-detail-durability"><div class="weapon-attachments-container-detail-durability-total"></div></div></div>
+            <img src="./attachment_images/weapon_pistol.png" class="weapon-attachments-container-image">
+
+            <div class="weapon-attachments-title"><span style="font-weight: bold; letter-spacing: .1vh;">Attachments</span></div>
+            <div class="weapon-attachments">
+            </div>
+
+            <div class="weapon-attachments-remove"><i class="fas fa-trash"></i></div>
+
+            <div class="weapon-attachments-back"><p>RETURN</p></div>
+        </div>
+        <div class="itemboxes-container"></div>
+        <div class="itembox-container template"></div>
+        <div class="requiredItem-container">
+        </div>
+        <div class="z-hotbar-inventory">
+            <!-- auto generated -->
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="js/app.js" defer></script>
+    </body>
+</html>
