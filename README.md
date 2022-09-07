@@ -24,7 +24,8 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * Download source files from github
 * Drag source files into your resources folder
 * Rename folder from `lj-inventory-main` to `lj-inventory`
-* Replace all qb-inventory to lj-inventory. 
+* Replace all 'qb-inventory' to 'lj-inventory' like show in this image: (https://i.imgur.com/SyQwuoy.png).
+* Make sure your qb-weapons and qb-smallresources is up to date. 
 
 # Key Features
 * ALL IMAGES FOLLOW THE SAME DIMENSIONS
