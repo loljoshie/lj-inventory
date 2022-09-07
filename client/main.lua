@@ -55,11 +55,6 @@ end)
 RegisterNetEvent("lj-inventory:client:showBlur", function()
     Wait(50)
     showBlur = not showBlur
-    if not showBlur then
-	TriggerScreenblurFadeOut(400)
-    else
-        TriggerScreenblurFadeIn(400)
-    end
 end)
 
 -- Functions
@@ -353,10 +348,6 @@ end)
 
 RegisterNetEvent('QBCore:Player:SetPlayerData', function(val)
     PlayerData = val
-    SendNUIMessage({
-        action = 'UpdateCash',
-        cash = PlayerData.money['cash']
-    })
 end)
 
 AddEventHandler('onResourceStop', function(name)
@@ -440,7 +431,6 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
             maxweight = Config.MaxInventoryWeight,
             Ammo = PlayerAmmo,
             maxammo = Config.MaximumAmmoValues,
-	    cash = PlayerData.money['cash']
         })
         inInventory = true
     end
