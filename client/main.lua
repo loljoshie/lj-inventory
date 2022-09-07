@@ -111,18 +111,12 @@ local function FormatWeaponAttachments(itemdata)
     itemdata.name = itemdata.name:upper()
     if itemdata.info.attachments ~= nil and next(itemdata.info.attachments) ~= nil then
         for _, v in pairs(itemdata.info.attachments) do
-            if WeaponAttachments[itemdata.name] ~= nil then
-                for key, value in pairs(WeaponAttachments[itemdata.name]) do
-                    if value.component == v.component then
-                        local item = value.item
-                        attachments[#attachments+1] = {
-                            attachment = key,
-                            label = QBCore.Shared.Items[item].label
-                            --label = value.label
-                        }
-                    end
-                end
-            end
+            attachments[#attachments+1] = {
+                attachment = v.item,
+                label = v.label,
+                image = QBCore.Shared.Items[v.item].image,
+                component = v.component
+            }
         end
     end
     return attachments
@@ -517,7 +511,7 @@ RegisterNetEvent('inventory:client:PickupSnowballs', function()
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
         ClearPedTasks(ped)
-        TriggerServerEvent('QBCore:Server:AddItem', "snowball", 1)
+        TriggerServerEvent('inventory:server:snowball', 'add')
         TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["snowball"], "add")
     end, function() -- Cancel
         ClearPedTasks(ped)
@@ -559,7 +553,7 @@ RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
         TriggerEvent('weapons:client:SetCurrentWeapon', weaponData, shootbool)
         local ammo = tonumber(weaponData.info.ammo) or 0
 
-        if weaponName == "weapon_petrolcan" then
+        if weaponName == "weapon_fireextinguisher" then
             ammo = 4000
         end
 
@@ -639,6 +633,10 @@ end)
 RegisterCommand('closeinv', function()
     closeInventory()
 end, false)
+
+RegisterNetEvent("qb-inventory:client:closeinv", function()
+    closeInventory()
+end)
 
 RegisterCommand('inventory', function()
     if not isCrafting and not inInventory then
@@ -786,12 +784,14 @@ end)
 
 -- NUI
 
-RegisterNUICallback('RobMoney', function(data)
+RegisterNUICallback('RobMoney', function(data, cb)
     TriggerServerEvent("police:server:RobPlayer", data.TargetId)
+    cb('ok')
 end)
 
-RegisterNUICallback('Notify', function(data)
+RegisterNUICallback('Notify', function(data, cb)
     QBCore.Functions.Notify(data.message, data.type)
+    cb('ok')
 end)
 
 RegisterNUICallback('GetWeaponData', function(cData, cb)
@@ -805,29 +805,26 @@ end)
 RegisterNUICallback('RemoveAttachment', function(data, cb)
     local ped = PlayerPedId()
     local WeaponData = QBCore.Shared.Items[data.WeaponData.name]
-    local Attachment = WeaponAttachments[WeaponData.name:upper()][data.AttachmentData.attachment]
+    print(data.AttachmentData.attachment:gsub("(.*).*_",''))
+    data.AttachmentData.attachment = data.AttachmentData.attachment:gsub("(.*).*_",'')
     QBCore.Functions.TriggerCallback('weapons:server:RemoveAttachment', function(NewAttachments)
         if NewAttachments ~= false then
-            local Attachies = {}
-            RemoveWeaponComponentFromPed(ped, joaat(data.WeaponData.name), joaat(Attachment.component))
+            local attachments = {}
+            RemoveWeaponComponentFromPed(ped, GetHashKey(data.WeaponData.name), GetHashKey(data.AttachmentData.component))
             for _, v in pairs(NewAttachments) do
-                for _, pew in pairs(WeaponAttachments[WeaponData.name:upper()]) do
-                    if v.component == pew.component then
-                        local item = pew.item
-                        Attachies[#Attachies+1] = {
-                            attachment = pew.item,
-                            label = QBCore.Shared.Items[item].label,
-                        }
-                    end
-                end
+                attachments[#attachments+1] = {
+                    attachment = v.item,
+                    label = v.label,
+                    image = QBCore.Shared.Items[v.item].image
+                }
             end
             local DJATA = {
-                Attachments = Attachies,
+                Attachments = attachments,
                 WeaponData = WeaponData,
             }
             cb(DJATA)
         else
-            RemoveWeaponComponentFromPed(ped, joaat(data.WeaponData.name), joaat(Attachment.component))
+            RemoveWeaponComponentFromPed(ped, GetHashKey(data.WeaponData.name), GetHashKey(data.AttachmentData.component))
             cb({})
         end
     end, data.AttachmentData, data.WeaponData)
