@@ -2406,11 +2406,6 @@ var requiredItemOpen = false;
         totalWeight = 0;
         totalWeightOther = 0;
 
-        $("#player-cash").html(data.cash.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 0
-        }));
         $(".player-inventory").find(".item-slot").remove();
         $(".ply-hotbar-inventory").find(".item-slot").remove();
         $(".ply-iteminfo-container").css("opacity", "0.0");
@@ -3019,13 +3014,6 @@ var requiredItemOpen = false;
                         '<div class="inv-option-item" id="rob-money"><p>TAKE MONEY</p></div>'
                     );
                     $("#rob-money").data("TargetId", event.data.TargetId);
-                    break;
-                case "UpdateCash":
-                    $("#player-cash").html(event.data.cash.toLocaleString('en-US', {
-                        style: 'currency',
-                        currency: 'USD',
-                        minimumFractionDigits: 0
-                    }));
                     break;
             }
         });
