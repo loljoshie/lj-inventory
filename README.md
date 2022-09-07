@@ -1,8 +1,9 @@
 ![LJ Inventory](https://user-images.githubusercontent.com/91661118/146313051-665337bf-ed92-4ed0-bbb9-6ee9613f670d.png)
 
-# lj-inventory used with QBCore Framework
+# Latest QBCore Update
+Replace all qb-inventory to lj-inventory. 
 
-Join my Discord laboratory for updates, support, and special early testing!
+Join my Discord for updates, support, and special early testing!
 <br>
 https://discord.gg/projectsloth
 
@@ -63,36 +64,9 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 ### inventory trunk
 ![inventory trunk](https://user-images.githubusercontent.com/91661118/146316079-b0260b68-78c0-4266-976d-a527264491f3.png)
 
-# Change Logs
-
-### 1.1
-* Added help information box (helps you learn how to use inventory better)
-* Added option to turn on and off blur effect
-* Added qb-target for crafting - Boom1053
-### 1.0
-* Initial release
 
 # Credits
 * ihyajb (Aj) for [original version](https://github.com/ihyajb/aj-inventory)
 
 # Issues and Suggestions
 Please use the GitHub issues system to report issues or make suggestions, when making suggestion, please keep [Suggestion] in the title to make it clear that it is a suggestion.
-
-# Latest QB-CORE UPDATE (PLEASE READ)
-
-MAKE SURE YOUR FOLLOWING RESOURCES ARE UP TO DATE:
-
-QB-CORE
-QB-SMALLRESOURCES
-QB-WEAPONS
-
-ONCE THAT IS DONE, YOU NEED TO REPLACE THE NEWLY ADDED EXPORTS IN QB-CORE.
-
-FOR ME, ALL I HAD TO DO WAS MASS SEARCH MY RESOURCES FOLDER IN VISUAL STUDIO CODE LOOKING FOR 'qb-inventory' and replace it with 'lj-inventory'. 
-SEE IMAGE LINK BELOW, FOLLOW IT EXACTLY.
-
-(https://i.imgur.com/SyQwuoy.png)
-
-I TESTED TRUNKS, STASHES, GLOVEBOXES, DROPPING, CRAFTING, WEAPONS, ADDING/REMOVING/USING ITEMS.
-
-ONE SMALL ISSUE IS WEAPON ATTACHMENTS NOT BEING SHOWN IN THE UI TO REMOVE THEM FROM THE GUN. (I'M NOT GOOD WITH HTML SO)
