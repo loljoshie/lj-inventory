@@ -32,6 +32,5 @@ files {
 	'html/*.ttf'
 }
 
-dependency 'qb-weapons'
 
 lua54 'yes'
