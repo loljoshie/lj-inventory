@@ -22,6 +22,9 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 
 # How to install lj-inventory (Latest QBCore Update)
 * Download source files from github
+* Make sure you have latest updated [qb-core](https://github.com/qbcore-framework/qb-core)
+* Make sure you have latest updated [qb-smallresources](https://github.com/qbcore-framework/qb-smallresources)
+* Make sure you have latest updated [qb-weapons](https://github.com/qbcore-framework/qb-weapons)
 * Drag source files into your resources folder
 * Rename folder from `lj-inventory-main` to `lj-inventory`
 * Replace all qb-inventory to lj-inventory. 
