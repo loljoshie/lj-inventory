@@ -413,8 +413,13 @@ RegisterNetEvent('inventory:server:RobPlayer', function(TargetId)
 end)
 
 RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventory, other)
+    QBCore.Functions.Progressbar("OpenInventory", "Opening Inventory..", 100, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+        disableMouse = false,
+        disableCombat = true,
+    }, {}, {}, {}, function() -- Done
     if not IsEntityDead(PlayerPedId()) then
-        Wait(500)
         ToggleHotbar(false)
         if showBlur == true then
             TriggerScreenblurFadeIn(1000)
@@ -434,6 +439,9 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
         })
         inInventory = true
     end
+    end, function() -- Cancel
+        QBCore.Functions.Notify("Canceled", "error")
+    end)
 end)
 
 RegisterNetEvent('inventory:client:UpdatePlayerInventory', function(isError)
