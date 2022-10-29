@@ -614,6 +614,7 @@ RegisterNetEvent('inventory:client:DropItemAnim', function()
     TaskPlayAnim(ped, "pickup_object" ,"pickup_low" ,8.0, -8.0, -1, 1, 0, false, false, false )
     Wait(2000)
     ClearPedTasks(ped)
+    ExecuteCommand('inventory')
 end)
 
 RegisterNetEvent('inventory:client:SetCurrentStash', function(stash)
