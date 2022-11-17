@@ -47,7 +47,7 @@ local function LoadInventory(source, citizenid)
 	end
 
     if #missingItems > 0 then
-        print(("The following items were removed for player %s as they no longer exist"):format(GetPlayerName(source)))
+        print(("Következő tárgy törölve lett  %s mert nem létezik!"):format(GetPlayerName(source)))
 		QBCore.Debug(missingItems)
     end
 
@@ -144,7 +144,7 @@ local function AddItem(source, item, amount, slot, info)
 	local totalWeight = GetTotalWeight(Player.PlayerData.items)
 	local itemInfo = QBCore.Shared.Items[item:lower()]
 	if not itemInfo and not Player.Offline then
-		QBCore.Functions.Notify(source, "Item does not exist", 'error')
+		QBCore.Functions.Notify(source, "Tárgy nem létezik!", 'error')
 		return false
 	end
 
@@ -190,7 +190,7 @@ local function AddItem(source, item, amount, slot, info)
 			end
 		end
 	elseif not Player.Offline then
-		QBCore.Functions.Notify(source, "Inventory too full", 'error')
+		QBCore.Functions.Notify(source, "Inventory teli van!", 'error')
 	end
 	return false
 end
@@ -1288,7 +1288,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				if Drops[id] and not Drops[id].isOpen then
 					secondInv.coords = Drops[id].coords
 					secondInv.name = id
-					secondInv.label = "Dropped-"..tostring(id)
+					secondInv.label = "Ledobva-"..tostring(id)
 					secondInv.maxweight = 100000
 					secondInv.inventory = Drops[id].items
 					secondInv.slots = 30
@@ -1297,7 +1297,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 					Drops[id].createdTime = os.time()
 				else
 					secondInv.name = "none-inv"
-					secondInv.label = "Dropped-None"
+					secondInv.label = "Ledobva-HIBA (Nem dobj ide semmit mert eltűnik!)"
 					secondInv.maxweight = 100000
 					secondInv.inventory = {}
 					secondInv.slots = 0
@@ -1309,7 +1309,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 			TriggerClientEvent("inventory:client:OpenInventory", src, {}, Player.PlayerData.items)
 		end
 	else
-		TriggerClientEvent('QBCore:Notify', src, 'Not Accessible', 'error')
+		TriggerClientEvent('QBCore:Notify', src, 'Ezt nem teheted meg jelenleg!', 'error')
 	end
 end)
 
@@ -1705,7 +1705,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				AddToStash(stashId, toSlot, fromSlot, itemInfo["name"], fromAmount, fromItemData.info)
 			end
 		else
-			TriggerClientEvent("QBCore:Notify", src, "Item doesn\'t exist??", "error")
+			TriggerClientEvent("QBCore:Notify", src, "Tárgy nem létezik??", "error")
 		end
 	elseif QBCore.Shared.SplitStr(fromInventory, "-")[1] == "traphouse" then
 		local traphouseId = QBCore.Shared.SplitStr(fromInventory, "-")[2]
@@ -1745,7 +1745,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				exports['qb-traphouse']:AddHouseItem(traphouseId, toSlot, itemInfo["name"], fromAmount, fromItemData.info, src)
 			end
 		else
-			TriggerClientEvent("QBCore:Notify", src, "Item doesn't exist??", "error")
+			TriggerClientEvent("QBCore:Notify", src, "Tárgy nem létezik??", "error")
 		end
 	elseif QBCore.Shared.SplitStr(fromInventory, "-")[1] == "itemshop" then
 		local shopType = QBCore.Shared.SplitStr(fromInventory, "-")[2]
@@ -1765,7 +1765,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					QBCore.Functions.Notify(src, itemInfo["label"] .. " bought!", "success")
 					TriggerEvent("qb-log:server:CreateLog", "dealers", "Dealer item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
 				else
-					QBCore.Functions.Notify(src, "You don\'t have enough cash..", "error")
+					QBCore.Functions.Notify(src, "Nincs elegendő pénzed..", "error")
 				end
 			else
 				if Player.Functions.RemoveMoney("cash", price, "dealer-item-bought") then
@@ -1798,7 +1798,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				QBCore.Functions.Notify(src, itemInfo["label"] .. " bought!", "success")
 				TriggerEvent("qb-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
 			else
-				QBCore.Functions.Notify(src, "You don't have enough cash..", "error")
+				QBCore.Functions.Notify(src, "Nincs elegendő pénzed..", "error")
 			end
 		else
 			if Player.Functions.RemoveMoney("cash", price, "unkown-itemshop-bought-item") then
@@ -1811,7 +1811,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				QBCore.Functions.Notify(src, itemInfo["label"] .. " bought!", "success")
 				TriggerEvent("qb-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
 			else
-				TriggerClientEvent('QBCore:Notify', src, "You don\'t have enough cash..", "error")
+				TriggerClientEvent('QBCore:Notify', src, "Nincs elegendő pénzed..", "error")
 			end
 		end
 	elseif fromInventory == "crafting" then
@@ -1820,7 +1820,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			TriggerClientEvent("inventory:client:CraftItems", src, itemData.name, itemData.costs, fromAmount, toSlot, itemData.points)
 		else
 			TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, true)
-			TriggerClientEvent('QBCore:Notify', src, "You don't have the right items..", "error")
+			TriggerClientEvent('QBCore:Notify', src, "Nnics ehez neked megfelelő tárgyad..", "error")
 		end
 	elseif fromInventory == "attachment_crafting" then
 		local itemData = Config.AttachmentCrafting["items"][fromSlot]
@@ -1828,7 +1828,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			TriggerClientEvent("inventory:client:CraftAttachment", src, itemData.name, itemData.costs, fromAmount, toSlot, itemData.points)
 		else
 			TriggerClientEvent("inventory:client:UpdatePlayerInventory", src, true)
-			TriggerClientEvent('QBCore:Notify', src, "You don't have the right items..", "error")
+			TriggerClientEvent('QBCore:Notify', src, "Nnics ehez neked megfelelő tárgyad..", "error")
 		end
 	else
 		-- drop
@@ -1881,7 +1881,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				end
 			end
 		else
-			TriggerClientEvent("QBCore:Notify", src, "Item doesn't exist??", "error")
+			TriggerClientEvent("QBCore:Notify", src, "Tárgy nem létezik??", "error")
 		end
 	end
 end)
@@ -1899,11 +1899,11 @@ RegisterServerEvent("inventory:server:GiveItem", function(target, name, amount, 
 	target = tonumber(target)
     local OtherPlayer = QBCore.Functions.GetPlayer(target)
     local dist = #(GetEntityCoords(GetPlayerPed(src))-GetEntityCoords(GetPlayerPed(target)))
-	if Player == OtherPlayer then return QBCore.Functions.Notify(src, "You can\'t give yourself an item?") end
-	if dist > 2 then return QBCore.Functions.Notify(src, "You are too far away to give items!") end
+	if Player == OtherPlayer then return QBCore.Functions.Notify(src, "Ezt nem tudod magadnak adni?") end
+	if dist > 2 then return QBCore.Functions.Notify(src, "Túl messz vagy!") end
 	local item = GetItemBySlot(src, slot)
-	if not item then QBCore.Functions.Notify(src, "Item you tried giving not found!"); return end
-	if item.name ~= name then QBCore.Functions.Notify(src, "Incorrect item found try again!"); return end
+	if not item then QBCore.Functions.Notify(src, "Amit adtál volna tárgyat nem létezik!"); return end
+	if item.name ~= name then QBCore.Functions.Notify(src, "Rossz tárgy találva!"); return end
 
 	if amount <= item.amount then
 		if amount == 0 then
@@ -1927,10 +1927,10 @@ RegisterServerEvent("inventory:server:GiveItem", function(target, name, amount, 
 				TriggerClientEvent("inventory:client:UpdatePlayerInventory", target, false)
 			end
 		else
-			TriggerClientEvent('QBCore:Notify', src,  "You do not have enough of the item", "error")
+			TriggerClientEvent('QBCore:Notify', src,  "Nincs elegendő tárgyad ehez", "error")
 		end
 	else
-		TriggerClientEvent('QBCore:Notify', src, "You do not have enough items to transfer")
+		TriggerClientEvent('QBCore:Notify', src, "Nem birod ezt átadni")
 	end
 end)
 
@@ -1989,7 +1989,7 @@ end)
 
 -- command
 
-QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", help="stash/trunk/glovebox"},{name="id/plate", help="ID of stash or license plate"}}, true, function(source, args)
+QBCore.Commands.Add("resetinv", "Inventory törlés/Reset (Csak admin)", {{name="type", help="stash/trunk/glovebox"},{name="id/plate", help="ID of stash or license plate"}}, true, function(source, args)
 	local invType = args[1]:lower()
 	table.remove(args, 1)
 	local invId = table.concat(args, " ")
@@ -2007,18 +2007,18 @@ QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", h
 				Stashes[invId].isOpen = false
 			end
 		else
-			TriggerClientEvent('QBCore:Notify', source,  "Not a valid type..", "error")
+			TriggerClientEvent('QBCore:Notify', source,  "Nem megfelelő típus..", "error")
 		end
 	else
-		TriggerClientEvent('QBCore:Notify', source,  "Arguments not filled out correctly..", "error")
+		TriggerClientEvent('QBCore:Notify', source,  "Nem jól töltöttél ki mindent..", "error")
 	end
 end, "admin")
 
-QBCore.Commands.Add("rob", "Rob Player", {}, false, function(source, args)
+QBCore.Commands.Add("rablas", "Játékos rablása", {}, false, function(source, args)
 	TriggerClientEvent("police:client:RobPlayer", source)
 end)
 
-QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="Player ID"},{name="item", help="Name of the item (not a label)"}, {name="amount", help="Amount of items"}}, false, function(source, args)
+QBCore.Commands.Add("giveitem", "tárgy adása játékosnak (Csak admin)", {{name="id", help="Player ID"},{name="item", help="Name of the item (not a label)"}, {name="amount", help="Amount of items"}}, false, function(source, args)
 	local id = tonumber(args[1])
 	local Player = QBCore.Functions.GetPlayer(id)
 	local amount = tonumber(args[3]) or 1
@@ -2054,19 +2054,19 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 				end
 
 				if AddItem(id, itemData["name"], amount, false, info) then
-					QBCore.Functions.Notify(source, "You Have Given " ..GetPlayerName(id).." "..amount.." "..itemData["name"].. "", "success")
+					QBCore.Functions.Notify(source, "Átadtál egy tárgyat " ..GetPlayerName(id).." "..amount.." "..itemData["name"].. "", "success")
 				else
-					QBCore.Functions.Notify(source, "Can\'t give item!", "error")
+					QBCore.Functions.Notify(source, "Nem birod átadni!", "error")
 				end
 			else
-				QBCore.Functions.Notify(source, "Item Does Not Exist", "error")
+				QBCore.Functions.Notify(source, "Tárgy nem létezik", "error")
 			end
 	else
-		QBCore.Functions.Notify(source,  "Player Is Not Online", "error")
+		QBCore.Functions.Notify(source,  "Játékos nem elérhető", "error")
 	end
 end, "admin")
 
-QBCore.Commands.Add("randomitems", "Give Random Items (God Only)", {}, false, function(source, _)
+QBCore.Commands.Add("randomitems", "Random tárgyak (Csak god rangú)", {}, false, function(source, _)
 	local filteredItems = {}
 	for k, v in pairs(QBCore.Shared.Items) do
 		if QBCore.Shared.Items[k]["type"] ~= "weapon" then
@@ -2092,12 +2092,12 @@ QBCore.Commands.Add('clearinv', 'Clear Players Inventory (Admin Only)', { { name
     if Player then
         ClearInventory(playerId)
     else
-        QBCore.Functions.Notify(source, "Player not online", 'error')
+        QBCore.Functions.Notify(source, "Játékos nem elérhető", 'error')
     end
 end, 'admin')
 
 -- item
-
+--xmas eventhez
 -- QBCore.Functions.CreateUseableItem("snowball", function(source, item)
 -- 	local Player = QBCore.Functions.GetPlayer(source)
 -- 	local itemData = Player.Functions.GetItemBySlot(item.slot)       -- --- DID THIS GET PUT ELSEWHERE?? IDK
@@ -2117,7 +2117,7 @@ CreateUsableItem("driver_license", function(source, item)
 			TriggerClientEvent('chat:addMessage', v,  {
 					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>First Name:</strong> {1} <br><strong>Last Name:</strong> {2} <br><strong>Birth Date:</strong> {3} <br><strong>Licenses:</strong> {4}</div></div>',
 					args = {
-						"Drivers License",
+						"Vezetői engedély",
 						item.info.firstname,
 						item.info.lastname,
 						item.info.birthdate,
