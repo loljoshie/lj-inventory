@@ -668,6 +668,7 @@ RegisterNetEvent("qb-inventory:client:closeinv", function()
 end)
 
 RegisterCommand('inventory', function()
+    if IsNuiFocused() then return end
     if not isCrafting and not inInventory then
         if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
             local ped = PlayerPedId()
