@@ -317,6 +317,18 @@ body {
     font-weight: 300;
     font-family: 'Roboto', sans-serif !important;
 }
+.inv-option-item > label {
+    color: white;
+    text-align: center;
+    line-height: 48px;
+    text-transform: normal;
+    font-size: 1.5vh;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif !important;
+    margin-right: 10px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
 
 .inv-option-item {
     margin-top: 3%;
@@ -1124,4 +1136,11 @@ body {
 
 .weapon-attachments-back:hover {
     background-color: rgb(18, 18, 18);
+}
+
+.color-picker-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }

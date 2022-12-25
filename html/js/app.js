@@ -248,6 +248,26 @@ $(document).on("click", ".weapon-attachments-back", function(e) {
     AttachmentScreenActive = false;
 });
 
+function changeInventoryColor(color) {
+    $( ".player-inventory-bg" ).css( "background-color", color);
+    $( ".other-inventory-bg" ).css( "background-color", color);
+    $( ".inv-options" ).css( "background-color", color);
+    localStorage.setItem('lj-inventory-color', color);
+}
+
+const savedColor = localStorage.getItem('lj-inventory-color');
+
+if (savedColor) {
+    changeInventoryColor(savedColor)
+}
+
+$('#favcolor').change(function(){
+    let color = $(this).val();
+    let hexOpacity = "CC";
+    let finalColor = color+hexOpacity;
+    changeInventoryColor(finalColor);
+});
+
 function FormatAttachmentInfo(data) {
     $.post(
         "https://lj-inventory/GetWeaponData",
