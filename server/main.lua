@@ -1484,7 +1484,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				AddToStash(stashId, toSlot, fromSlot, itemInfo["name"], fromAmount, fromItemData.info)
 			elseif QBCore.Shared.SplitStr(toInventory, "-")[1] == "traphouse" then
 				-- Traphouse
-				local traphouseId = QBCore.Shared.SplitStr(toInventory, "-")[2]
+				local traphouseId = QBCore.Shared.SplitStr(toInventory, "_")[2]
 				local toItemData = exports['qb-traphouse']:GetInventoryData(traphouseId, toSlot)
 				local IsItemValid = exports['qb-traphouse']:CanItemBeSaled(fromItemData.name:lower())
 				if IsItemValid then

@@ -414,25 +414,54 @@ end)
 
 RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventory, other)
     if not IsEntityDead(PlayerPedId()) then
-        Wait(500)
-        ToggleHotbar(false)
-        if showBlur == true then
-            TriggerScreenblurFadeIn(1000)
+        if Config.Progressbar.Enable then
+            QBCore.Functions.Progressbar('open_inventory', 'Opening Inventory...', math.random(Config.Progressbar.minT, Config.Progressbar.maxT), false, true, { -- Name | Label | Time | useWhileDead | canCancel
+                disableMovement = false,
+                disableCarMovement = false,
+                disableMouse = false,
+                disableCombat = false,
+            }, {}, {}, {}, function() -- Play When Done
+                ToggleHotbar(false)
+                if showBlur == true then
+                    TriggerScreenblurFadeIn(1000)
+                end
+                SetNuiFocus(true, true)
+                if other then
+                    currentOtherInventory = other.name
+                end
+                SendNUIMessage({
+                    action = "open",
+                    inventory = inventory,
+                    slots = Config.MaxInventorySlots,
+                    other = other,
+                    maxweight = Config.MaxInventoryWeight,
+                    Ammo = PlayerAmmo,
+                    maxammo = Config.MaximumAmmoValues,
+                })
+                inInventory = true
+                end, function() -- Play When Cancel
+            end)
+        else
+            Wait(500)
+            ToggleHotbar(false)
+            if showBlur == true then
+                TriggerScreenblurFadeIn(1000)
+            end
+            SetNuiFocus(true, true)
+            if other then
+                currentOtherInventory = other.name
+            end
+            SendNUIMessage({
+                action = "open",
+                inventory = inventory,
+                slots = Config.MaxInventorySlots,
+                other = other,
+                maxweight = Config.MaxInventoryWeight,
+                Ammo = PlayerAmmo,
+                maxammo = Config.MaximumAmmoValues,
+            })
+            inInventory = true
         end
-        SetNuiFocus(true, true)
-        if other then
-            currentOtherInventory = other.name
-        end
-        SendNUIMessage({
-            action = "open",
-            inventory = inventory,
-            slots = Config.MaxInventorySlots,
-            other = other,
-            maxweight = Config.MaxInventoryWeight,
-            Ammo = PlayerAmmo,
-            maxammo = Config.MaximumAmmoValues,
-        })
-        inInventory = true
     end
 end)
 
@@ -639,6 +668,7 @@ RegisterNetEvent("qb-inventory:client:closeinv", function()
 end)
 
 RegisterCommand('inventory', function()
+    if IsNuiFocused() then return end
     if not isCrafting and not inInventory then
         if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
             local ped = PlayerPedId()
@@ -767,7 +797,7 @@ RegisterKeyMapping('hotbar', 'Toggles keybind slots', 'keyboard', 'z')
 
 for i = 1, 6 do
     RegisterCommand('slot' .. i,function()
-        if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+        if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() and not LocalPlayer.state.inv_busy then
             if i == 6 then
                 i = Config.MaxInventorySlots
             end
