@@ -29,7 +29,7 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * Make sure you have latest updated [qb-weapons](https://github.com/qbcore-framework/qb-weapons)
 * Drag source files into your resources folder
 * Rename folder from `lj-inventory-main` to `lj-inventory`
-* Replace all qb-inventory to lj-inventory. 
+* go to qbcore/server/players and replace every instance of qb-inventory with lj-inventory 
 
 # Key Features
 * ALL IMAGES FOLLOW THE SAME DIMENSIONS
