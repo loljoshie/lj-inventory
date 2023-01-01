@@ -14,6 +14,7 @@ local isCrafting = false
 local isHotbar = false
 local WeaponAttachments = {}
 local showBlur = true
+local entity = nil
 
 local function HasItem(items, amount)
     local isTable = type(items) == 'table'
@@ -82,8 +83,32 @@ local function OpenVending()
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "Vendingshop_"..math.random(1, 99), ShopItems)
 end
 
+local function GetClosestTrashBin()
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local object = nil
+    for _, bins in pairs(Config.BinObjects) do
+        local ClosestObject = GetClosestObjectOfType(pos.x, pos.y, pos.z, 1.0, joaat(bins), false, false, false)
+        if ClosestObject ~= 0 then
+            if object == nil then
+                object = ClosestObject
+            end
+        end
+    end
+    entity = object
+end
+
+local function openTrashBin()
+    GetClosestTrashBin()
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "trashbin_"..entity, {
+        maxweight = 4000000,
+        slots = 300,
+    })
+    TriggerEvent("inventory:client:SetCurrentStash", "trashbin_"..entity)
+end
+
 local function DrawText3Ds(x, y, z, text)
-	SetTextScale(0.35, 0.35)
+    SetTextScale(0.35, 0.35)
     SetTextFont(4)
     SetTextProportional(1)
     SetTextColour(255, 255, 255, 215)
@@ -966,6 +991,40 @@ end)
 
 
 -- Threads
+
+CreateThread(function()
+    if Config.UseTarget then
+        exports['qb-target']:AddTargetModel(Config.BinObjects, {
+            options = {
+            {
+                icon = 'fas fa-trash-alt',
+                label = 'Trash Bin',
+                    action = function()
+                        openTrashBin()
+                    end
+            }
+        },
+            distance = 1.0
+        })
+    end
+end)
+
+CreateThread(function()
+    if Config.UseTarget then
+        exports['qb-target']:AddTargetModel(Config.VendingObjects, {
+            options = {
+                {
+                    icon = "fa-solid fa-cash-register",
+                    label = "Open Vending Menu",
+                    action = function()
+                        OpenVending()
+                    end
+                },
+            },
+            distance = 2.5
+        })
+    end
+end)
 
 CreateThread(function()
     while true do
