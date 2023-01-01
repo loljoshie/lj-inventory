@@ -996,14 +996,14 @@ CreateThread(function()
     if Config.UseTarget then
         exports['qb-target']:AddTargetModel(Config.BinObjects, {
             options = {
-            {
-                icon = 'fas fa-trash-alt',
-                label = 'Trash Bin',
+                {
+                    icon = 'fas fa-trash-alt',
+                    label = 'Trash Bin',
                     action = function()
                         openTrashBin()
                     end
-            }
-        },
+                },
+            },
             distance = 1.0
         })
     end
