@@ -2023,7 +2023,7 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 	local Player = QBCore.Functions.GetPlayer(id)
 	local amount = tonumber(args[3]) or 1
 	local itemData = QBCore.Shared.Items[tostring(args[2]):lower()]
-	if Player then
+if Player then
 			if itemData then
 				-- check iteminfo
 				local info = {}
@@ -2034,17 +2034,35 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 					info.birthdate = Player.PlayerData.charinfo.birthdate
 					info.gender = Player.PlayerData.charinfo.gender
 					info.nationality = Player.PlayerData.charinfo.nationality
+					--added
+				elseif itemData["name"] == "whitewidow_wateringcan" then
+					info.charges = 8
+				elseif itemData["name"] == "whitewidow_branchwet" then
+					info.health = math.random(1, 100)
+				elseif itemData["name"] == "whitewidow_branchdry" then
+					info.buds = math.random(1, 100)
+					--end
 				elseif itemData["name"] == "driver_license" then
 					info.firstname = Player.PlayerData.charinfo.firstname
 					info.lastname = Player.PlayerData.charinfo.lastname
 					info.birthdate = Player.PlayerData.charinfo.birthdate
 					info.type = "Class C Driver License"
+				elseif itemData["name"] == "whitewidow_wateringcan" then
+					info.charges = 8
+				elseif itemData["name"] == "whitewidow_branchwet" then
+					info.health = math.random(1, 100)
+				elseif itemData["name"] == "whitewidow_branchdry" then
+					info.buds = math.random(1, 100)
 				elseif itemData["type"] == "weapon" then
 					amount = 1
 					info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
 					info.quality = 100
 				elseif itemData["name"] == "harness" then
 					info.uses = 20
+				elseif itemData["name"] == "syphoningkit" then
+					info.gasamount = 0
+				elseif itemData["name"] == "jerrycan" then
+					info.gasamount = 0
 				elseif itemData["name"] == "markedbills" then
 					info.worth = math.random(5000, 10000)
 				elseif itemData["name"] == "labkey" then
