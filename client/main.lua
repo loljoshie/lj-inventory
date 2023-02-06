@@ -164,7 +164,7 @@ local function ToggleHotbar(toggle)
         [3] = PlayerData.items[3],
         [4] = PlayerData.items[4],
         [5] = PlayerData.items[5],
-        [41] = PlayerData.items[41],
+        [50] = PlayerData.items[50],
     }
 
     SendNUIMessage({
@@ -711,54 +711,72 @@ RegisterCommand('inventory', function()
                 local vehicleClass = GetVehicleClass(curVeh)
                 local maxweight
                 local slots
-                if vehicleClass == 0 then
-                    maxweight = 38000
-                    slots = 30
-                elseif vehicleClass == 1 then
-                    maxweight = 50000
-                    slots = 40
-                elseif vehicleClass == 2 then
-                    maxweight = 75000
+                              if vehicleClass == 0 then
+                    maxweight = 3800000
                     slots = 50
+                elseif vehicleClass == 1 then
+                    maxweight = 5000000
+                    slots = 60
+                elseif vehicleClass == 2 then
+                    maxweight = 7500000
+                    slots = 70
                 elseif vehicleClass == 3 then
-                    maxweight = 42000
-                    slots = 35
+                    maxweight = 4200000
+                    slots = 45
                 elseif vehicleClass == 4 then
-                    maxweight = 38000
-                    slots = 30
+                    maxweight = 3800000
+                    slots = 50
                 elseif vehicleClass == 5 then
-                    maxweight = 30000
+                    maxweight = 3000000
                     slots = 25
                 elseif vehicleClass == 6 then
-                    maxweight = 30000
+                    maxweight = 3000000
                     slots = 25
                 elseif vehicleClass == 7 then
-                    maxweight = 30000
+                    maxweight = 3000000
                     slots = 25
                 elseif vehicleClass == 8 then
-                    maxweight = 15000
+                    maxweight = 1500000
                     slots = 15
                 elseif vehicleClass == 9 then
-                    maxweight = 60000
-                    slots = 35
+                    maxweight = 60000000
+                    slots = 75
                 elseif vehicleClass == 12 then
-                    maxweight = 120000
+                    maxweight = 12000000
                     slots = 35
                 elseif vehicleClass == 13 then
                     maxweight = 0
                     slots = 0
                 elseif vehicleClass == 14 then
-                    maxweight = 120000
+                    maxweight = 12000000
                     slots = 50
                 elseif vehicleClass == 15 then
-                    maxweight = 120000
+                    maxweight = 12000000
                     slots = 50
                 elseif vehicleClass == 16 then
-                    maxweight = 120000
+                    maxweight = 12000000
+                    slots = 50
+                elseif vehicleClass == 17 then
+                    maxweight = 12000000
+                    slots = 50
+                elseif vehicleClass == 18 then
+                    maxweight = 12000000
+                    slots = 50
+                elseif vehicleClass == 19 then
+                    maxweight = 12000000
+                    slots = 50
+                elseif vehicleClass == 20 then
+                    maxweight = 12000000
+                    slots = 50
+                elseif vehicleClass == 21 then
+                    maxweight = 12000000
+                    slots = 50
+                elseif vehicleClass == 22 then
+                    maxweight = 12000000
                     slots = 50
                 else
-                    maxweight = 60000
-                    slots = 35
+                    maxweight = 6000000
+                    slots = 55
                 end
                 local other = {
                     maxweight = maxweight,
