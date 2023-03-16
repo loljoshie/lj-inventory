@@ -29,7 +29,9 @@ In collaboration with [OnlyCats](https://github.com/onlycats) who helped reorgan
 * Make sure you have latest updated [qb-weapons](https://github.com/qbcore-framework/qb-weapons)
 * Drag source files into your resources folder
 * Rename folder from `lj-inventory-main` to `lj-inventory`
-* Replace all qb-inventory to lj-inventory. 
+* Replace all qb-inventory to lj-inventory. Example below using Visual Studio Code in replacing all instances. 
+![image](https://user-images.githubusercontent.com/82112471/225484545-b2c79869-e7b4-4f37-81da-829e4430f73f.png)
+ 
 
 # Key Features
 * ALL IMAGES FOLLOW THE SAME DIMENSIONS
