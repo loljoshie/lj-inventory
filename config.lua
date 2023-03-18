@@ -16,6 +16,33 @@ Config.Progressbar = {
     maxT = 500              -- Max Time for Inventory to open
 }
 
+Config.MDTWeaponImages = {
+    [1] = {
+        item = 'weapon_knife',
+        image = 'https://cfx-nui-qb-inventory/html/images/weapon_knife.png',
+    },
+    [2] = {
+        item = 'weapon_bat',
+        image = 'https://cfx-nui-qb-inventory/html/images/weapon_bat.png',
+    },
+    [3] = {
+        item = 'weapon_hatchet',
+        image = 'https://cfx-nui-qb-inventory/html/images/weapon_hatchet.png',
+    },
+    [4] = {
+        item = 'weapon_pistol',
+        image = 'https://cfx-nui-qb-inventory/html/images/weapon_pistol.png',
+    },
+    [5] = {
+        item = 'weapon_snspistol',
+        image = 'https://cfx-nui-qb-inventory/html/images/weapon_snspistol.png',
+    },
+    [6] = {
+        item = 'weapon_vintagepistol',
+        image = 'https://cfx-nui-qb-inventory/html/images/weapon_vintagepistol.png',
+    }
+}
+
 Config.VendingObjects = {
     "prop_vend_soda_01",
     "prop_vend_soda_02",
