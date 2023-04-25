@@ -715,49 +715,60 @@ RegisterCommand('inventory', function()
                 local vehicleClass = GetVehicleClass(curVeh)
                 local maxweight
                 local slots
-                if vehicleClass == 0 then
+            -- Trunk Storage
+            if CurrentVehicle then -- Trunk
+                local vehicleClass = GetVehicleClass(curVeh)
+                local maxweight
+                local slots
+                if vehicleClass == 0 then --Compacts
                     maxweight = 38000
                     slots = 30
-                elseif vehicleClass == 1 then
+                elseif vehicleClass == 1 then --Sedans
                     maxweight = 50000
                     slots = 40
-                elseif vehicleClass == 2 then
+                elseif vehicleClass == 2 then --SUVs
                     maxweight = 75000
                     slots = 50
-                elseif vehicleClass == 3 then
+                elseif vehicleClass == 3 then --Coupes
                     maxweight = 42000
                     slots = 35
-                elseif vehicleClass == 4 then
+                elseif vehicleClass == 4 then --Muscle
                     maxweight = 38000
                     slots = 30
-                elseif vehicleClass == 5 then
+                elseif vehicleClass == 5 then --Sports
                     maxweight = 30000
                     slots = 25
-                elseif vehicleClass == 6 then
+                elseif vehicleClass == 6 then --Sports
                     maxweight = 30000
                     slots = 25
-                elseif vehicleClass == 7 then
+                elseif vehicleClass == 7 then --Super
                     maxweight = 30000
                     slots = 25
-                elseif vehicleClass == 8 then
+                elseif vehicleClass == 8 then --Motorcycles
                     maxweight = 15000
                     slots = 15
-                elseif vehicleClass == 9 then
+                elseif vehicleClass == 9 then --Off-Road
                     maxweight = 60000
                     slots = 35
-                elseif vehicleClass == 12 then
+                elseif vehicleClass == 10 then --Industrial
+                    maxweight = 60000
+                    slots = 35
+                elseif vehicleClass == 11 then --Utility
+                    maxweight = 60000
+                    slots = 35
+                elseif vehicleClass == 12 then --Vans
                     maxweight = 120000
                     slots = 35
-                elseif vehicleClass == 13 then
+                elseif vehicleClass == 13 then --Cycles
                     maxweight = 0
                     slots = 0
-                elseif vehicleClass == 14 then
+                elseif vehicleClass == 14 then --Boats
                     maxweight = 120000
                     slots = 50
-                elseif vehicleClass == 15 then
+                elseif vehicleClass == 15 then --Helicopters
                     maxweight = 120000
                     slots = 50
-                elseif vehicleClass == 16 then
+                elseif vehicleClass == 16 then--Planes 
                     maxweight = 120000
                     slots = 50
                 else
