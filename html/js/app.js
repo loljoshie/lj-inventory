@@ -515,6 +515,18 @@ function FormatItemInfo(itemData, dom) {
                 itemData.info.citizenid +
                 "</span></p>"
             );
+        } else if (itemData.name == "syphoningkit") { // Syphoning Kit (CDN-Fuel or CDN-Syphoning!)
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p>" + "A kit used to syphon gasoline from vehicles! <br><br>" + itemData.info.gasamount + " Liters Inside.</p>" +
+                "</span></p><p style=\"padding-top: .8vh;font-size:11px\"><b>Weight: </b>" + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + " | <b>Amount: </b> " + itemData.amount
+            );
+        } else if (itemData.name == "jerrycan") { // Jerry Can (CDN-Fuel!)
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p>" + "A Jerry Can, designed to hold fuel! <br><br>" + itemData.info.gasamount + " Liters Inside.</p>" +
+                "</span></p><p style=\"padding-top: .8vh;font-size:11px\"><b>Weight: </b>" + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + " | <b>Amount: </b> " + itemData.amount
+            );
         } else if (itemData.name == "harness") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
@@ -650,6 +662,13 @@ function FormatItemInfo(itemData, dom) {
     } else {
         $(".item-info-title").html("<p>" + itemData.label + "</p>");
         $(".item-info-description").html("<p>" + itemData.description + "</p>");
+    }
+    if (itemData.name == "blueprint_document") { // Blueprint for crafting
+        $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        $(".item-info-description").html(
+            "<p><span>" + itemData.description + "</span></p>" +
+            "<p><strong>Blueprint :</strong> " + itemData.info.blueprint_label + "</p>"
+        );
     }
 }
 
@@ -2274,6 +2293,9 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
         //InventoryError($fromInv, $fromSlot);
     }
     handleDragDrop();
+    if ($toInv.attr("data-inventory") != $fromInv.attr("data-inventory")) {
+        setTimeout(function() { Inventory.Close(); }, 5000);
+    }
 }
 
 function isItemAllowed(item, allowedItems) {
@@ -3075,4 +3097,4 @@ $("#item-give").droppable({
             })
         );
     },
-});
+}); 
