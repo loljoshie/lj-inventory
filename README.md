@@ -1,3 +1,6 @@
+# [ps-inventory](https://github.com/Project-Sloth/ps-inventory)
+* [ps-inventory](https://github.com/Project-Sloth/ps-inventory) has been released with a new UI and future support, we recommend switching to that.
+  
 ![LJ Inventory](https://user-images.githubusercontent.com/91661118/146313051-665337bf-ed92-4ed0-bbb9-6ee9613f670d.png)
 
 ## Color Picking Added!
