@@ -1,3 +1,7 @@
+# lj-inventory is now archived.
+
+More than likely still works, no support will be offered. 
+
 # [ps-inventory](https://github.com/Project-Sloth/ps-inventory)
 * [ps-inventory](https://github.com/Project-Sloth/ps-inventory) has been released with a new UI and future support, we recommend switching to that.
   
